@@ -99,7 +99,7 @@ Get all values matching this `query`. If `count` is greater than `0` then return
 **Parameters**
 
 -   `query` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `count` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**  (optional, default `0`)
+-   `count` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 **Examples**
 

@@ -31,7 +31,7 @@ class Trie {
     @example store.match('Michael')
     @example store.match('John', 20)
   */
-  match (query: string, count: number = 0): Array<any> {
+  match (query: string, count?: number): Array<any> {
     if (!query) {
       return []
     }
@@ -53,7 +53,7 @@ class Trie {
 
       const sockets: Array<string> = Object.keys(node.socket)
       const socketCount: number = sockets.length
-      let char: string = sockets[0]
+      const char: string = sockets[0]
 
       if (node.name) {
         result.push(node.value)
@@ -128,7 +128,7 @@ class Trie {
     }
 
     let node = new Node({ socket: this.rootSocket })
-    let point: Object
+    let point: Object | void
 
     for (let n = 0, len = query.length; n < len; n++) {
       const char: string = query[n]
