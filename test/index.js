@@ -121,6 +121,20 @@ t.test('Trie', t => {
       t.end()
     })
 
+    t.test('alone', t => {
+      const store = new Store()
+
+      store.set(MichaelJimenez)
+      store.remove(MichaelJimenez)
+
+      t.notOk(store.get(MichaelJimenez))
+      t.equal(store.match(MichaelJimenez).length, 0)
+      t.deepEqual(store.table, {})
+      t.deepEqual(store.rootSocket, {})
+
+      t.end()
+    })
+
     t.test('leaf', t => {
       const store = new Store()
       feed(store, state)

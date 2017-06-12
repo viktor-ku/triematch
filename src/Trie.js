@@ -147,11 +147,12 @@ class Trie {
       node = node.socket[char]
     }
 
-    let pNode = way.pop()
-
-    if (pNode[0] === node) {
-      pNode = way.pop()
+    if (!way.length) {
+      this.reset()
+      return
     }
+
+    let pNode = way.pop()
 
     delete pNode[0].socket[pNode[1]]
     delete this.table[query]
