@@ -11,6 +11,7 @@ const MichaelJackson = 'Michael Jackson'
 const MichaelJacobs = 'Michael Jacobs'
 
 const names: Array<string> = [
+  Michael,
   MichaelJoseph,
   MichaelJones,
   MichaelJoneson,
