@@ -11,7 +11,7 @@ t.test('reset', t => {
   const store = new Store()
   $.feed(store, $.state)
 
-  t.equal(store.toArray().length, 7, 'before reset')
+  t.equal(store.toArray().length, $.names.length, 'before reset')
   t.ok(store.get($.MichaelJackson))
 
   store.reset()
