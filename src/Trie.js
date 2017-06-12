@@ -113,6 +113,44 @@ class Trie {
     @example store.remove('Michael Jacobs')
   */
   remove (query: string): void {
+    const end: Node = this.table[query]
+
+    if (!end) {
+      return
+    }
+
+    const endSockets: number = Object.keys(end.socket).length
+
+    if (endSockets) {
+      delete end.name
+      delete end.value
+      return
+    }
+
+    let node = new Node({ socket: this.rootSocket })
+    let point: Object
+
+    for (let n = 0, len = query.length; n < len; n++) {
+      const char: string = query[n]
+
+      if (!node.socket[char]) {
+        return
+      }
+
+      if (node.name || Object.keys(node.socket).length >= 2) {
+        point = { node, char }
+      }
+
+      node = node.socket[char]
+    }
+
+    if (!point) {
+      this.reset()
+      return
+    }
+
+    delete point.node.socket[point.char]
+    delete this.table[query]
   }
 
   /**
