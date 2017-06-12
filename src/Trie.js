@@ -17,10 +17,6 @@ class Trie {
     this.table = {}
   }
 
-  remove (query: string): void {
-
-  }
-
   /**
     Get exact one value like e.g. `Map` does
     @example store.get('Michael')
@@ -110,6 +106,55 @@ class Trie {
     node.name = key
     node.value = value
     this.table[key] = node
+  }
+
+  /**
+    Remove value by a given key
+    @example store.remove('Michael Jacobs')
+  */
+  remove (query: string): void {
+    const end: Node = this.table[query]
+
+    if (!end) {
+      return
+    }
+
+    const endSockets = Object.keys(end.socket)
+
+    if (endSockets.length) {
+      // has children
+      delete end.name
+      delete end.value
+      return
+    }
+
+    let node: Node = new Node({ socket: this.rootSocket })
+    const way = []
+
+    for (let n = 0, len = query.length; n < len; n++) {
+      const char: string = query[n]
+      const socket: Object = node.socket
+      const nextNode: Node = socket[char]
+
+      if (!nextNode) {
+        return
+      }
+
+      if (Object.keys(socket).length >= 2) {
+        way.push([node, char])
+      }
+
+      node = node.socket[char]
+    }
+
+    let pNode = way.pop()
+
+    if (pNode[0] === node) {
+      pNode = way.pop()
+    }
+
+    delete pNode[0].socket[pNode[1]]
+    delete this.table[query]
   }
 
   /**

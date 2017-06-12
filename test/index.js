@@ -110,60 +110,72 @@ t.test('Trie', t => {
     t.end()
   })
 
-  t.test('remove leaf', t => {
-    const store = new Store()
-    feed(store, state)
+  t.test('remove', t => {
+    t.test('unexisting thing', t => {
+      const store = new Store()
+      feed(store, state)
 
-    t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
-      'o',
-      'i',
-      'e',
-      'a'
-    ])
+      store.remove('Michael J')
+      t.equal(store.match('Michael J').length, names.length)
 
-    store.remove(MichaelJimenez)
+      t.end()
+    })
 
-    t.equal(store.match('Mic').length, names.length - 1, 'match Mic length')
-    t.notOk(store.get(MichaelJimenez), 'no more Michael Jimenez')
-    t.equal(store.toArray().length, names.length - 1, 'toArray check')
-    t.notOk(store.toObject()[MichaelJimenez], 'toObject check')
-    t.notOk(store.table[MichaelJimenez], 'internal table check')
-    t.notOk(store._getClosestNode('Michael Ji'))
-    t.notOk(store._getClosestNode('Michael Jim'))
-    t.notOk(store._getClosestNode('Michael Jime'))
-    t.notOk(store._getClosestNode('Michael Jimen'))
-    t.notOk(store._getClosestNode('Michael Jimene'))
-    t.notOk(store._getClosestNode('Michael Jimenez'))
-    t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
-      'o',
-      'e',
-      'a'
-    ])
+    t.test('leaf', t => {
+      const store = new Store()
+      feed(store, state)
 
-    t.end()
-  })
+      t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
+        'o',
+        'i',
+        'e',
+        'a'
+      ])
 
-  t.test('remove node with children', t => {
-    const store = new Store()
-    feed(store, state)
+      store.remove(MichaelJimenez)
 
-    t.deepEqual(Object.keys(store._getClosestNode(MichaelJones).socket), [
-      'o'
-    ])
+      t.equal(store.match('Mic').length, names.length - 1, 'match Mic length')
+      t.notOk(store.get(MichaelJimenez), 'no more Michael Jimenez')
+      t.equal(store.toArray().length, names.length - 1, 'toArray check')
+      t.notOk(store.toObject()[MichaelJimenez], 'toObject check')
+      t.notOk(store.table[MichaelJimenez], 'internal table check')
+      t.notOk(store._getClosestNode('Michael Ji'))
+      t.notOk(store._getClosestNode('Michael Jim'))
+      t.notOk(store._getClosestNode('Michael Jime'))
+      t.notOk(store._getClosestNode('Michael Jimen'))
+      t.notOk(store._getClosestNode('Michael Jimene'))
+      t.notOk(store._getClosestNode('Michael Jimenez'))
+      t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
+        'o',
+        'e',
+        'a'
+      ])
 
-    store.remove(MichaelJones)
+      t.end()
+    })
 
-    t.equal(store.match('Mic').length, names.length - 1, 'match Mic length')
-    t.equal(store.match(MichaelJones).length, 1)
-    t.deepEqual(store.match(MichaelJones)[0], state.filter(x => x.name === MichaelJones))
-    t.equal(store.toArray().length, names.length - 1, 'toArray check')
-    t.notOk(store.toObject()[MichaelJones], 'toObject check')
-    t.notOk(store.get(MichaelJones))
-    t.notOk(store.table[MichaelJones], 'internal table check')
+    t.test('fork', t => {
+      const store = new Store()
+      feed(store, state)
 
-    t.deepEqual(Object.keys(store._getClosestNode(MichaelJones).socket), [
-      'o'
-    ])
+      t.deepEqual(Object.keys(store._getClosestNode(MichaelJones).socket), [
+        'o'
+      ])
+
+      store.remove(MichaelJones)
+
+      t.equal(store.match('Mic').length, names.length - 1, 'match Mic length')
+      t.equal(store.match(MichaelJones).length, 1)
+      t.notOk(store.toObject()[MichaelJones], 'toObject check')
+      t.notOk(store.get(MichaelJones))
+      t.deepEqual(Object.keys(store._getClosestNode(MichaelJones).socket), [
+        'o'
+      ])
+      t.ok(store.get(MichaelJoneson))
+      t.equal(store.match('Michael Jon').length, 1)
+
+      t.end()
+    })
 
     t.end()
   })
