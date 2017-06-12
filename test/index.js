@@ -6,14 +6,22 @@ require('babel-register')
 const t = require('tap')
 const Store = require('../src/Trie')
 
+const MichaelJoseph = 'Michael Joseph'
+const MichaelJones = 'Michael Jones'
+const MichaelJoneson = 'Michael Joneson'
+const MichaelJimenez = 'Michael Jimenez'
+const MichaelJensen = 'Michael Jensen'
+const MichaelJackson = 'Michael Jackson'
+const MichaelJacobs = 'Michael Jacobs'
+
 const names = [
-  'Michael Joseph',
-  'Michael Jones',
-  'Michael Joneson',
-  'Michael Jimenez',
-  'Michael Jensen',
-  'Michael Jackson',
-  'Michael Jacobs'
+  MichaelJoseph,
+  MichaelJones,
+  MichaelJoneson,
+  MichaelJimenez,
+  MichaelJensen,
+  MichaelJackson,
+  MichaelJacobs
 ]
 
 const state = Array(names.length).fill().map((_, i) => ({
@@ -42,7 +50,9 @@ t.test('Trie', t => {
 
     t.notOk(store.get('Michael'))
     t.notOk(store.get('foo'))
-    t.deepEqual(store.get('Michael Jackson'), state.filter(x => x.name === 'Michael Jackson')[0])
+    t.notOk(store.get(null))
+    t.notOk(store.get([]))
+    t.equal(store.get(MichaelJackson).name, MichaelJackson)
 
     t.end()
   })
@@ -51,9 +61,9 @@ t.test('Trie', t => {
     const store = new Store()
     feed(store, state)
 
-    const a = store.match('Michael Jackson')
+    const a = store.match(MichaelJackson)
     t.equal(a.length, 1)
-    t.equal(a[0].name, 'Michael Jackson')
+    t.equal(a[0].name, MichaelJackson)
 
     t.end()
   })
@@ -77,10 +87,10 @@ t.test('Trie', t => {
     const store = new Store()
     feed(store, state)
 
-    const a = store.match('Michael Jones')
+    const a = store.match(MichaelJones)
     t.equal(a.length, 2)
-    t.ok(a.includes(state.filter(x => x.name === 'Michael Jones')[0]))
-    t.ok(a.includes(state.filter(x => x.name === 'Michael Joneson')[0]))
+    t.ok(a.includes(state.filter(x => x.name === MichaelJones)[0]))
+    t.ok(a.includes(state.filter(x => x.name === MichaelJoneson)[0]))
 
     t.end()
   })
@@ -90,12 +100,45 @@ t.test('Trie', t => {
     feed(store, state)
 
     t.equal(store.toArray().length, 7, 'before reset')
-    t.ok(store.get('Michael Jackson'))
+    t.ok(store.get(MichaelJackson))
 
     store.reset()
 
     t.equal(store.toArray().length, 0, 'after reset')
-    t.notOk(store.get('Michael Jackson'))
+    t.notOk(store.get(MichaelJackson))
+
+    t.end()
+  })
+
+  t.test('remove', t => {
+    const store = new Store()
+    feed(store, state)
+
+    t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
+      'o',
+      'i',
+      'e',
+      'a'
+    ])
+
+    store.remove(MichaelJimenez)
+
+    t.equal(store.match('Mic').length, names.length - 1, 'match Mic length')
+    t.notOk(store.get(MichaelJimenez), 'no more Michael Jimenez')
+    t.equal(store.toArray().length, names.length - 1, 'toArray check')
+    t.notOk(store.toObject()[MichaelJimenez], 'toObject check')
+    t.notOk(store.table[MichaelJimenez], 'internal table check')
+    t.notOk(store._getClosestNode('Michael Ji'))
+    t.notOk(store._getClosestNode('Michael Jim'))
+    t.notOk(store._getClosestNode('Michael Jime'))
+    t.notOk(store._getClosestNode('Michael Jimen'))
+    t.notOk(store._getClosestNode('Michael Jimene'))
+    t.notOk(store._getClosestNode('Michael Jimenez'))
+    t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
+      'o',
+      'e',
+      'a'
+    ])
 
     t.end()
   })

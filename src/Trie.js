@@ -17,20 +17,8 @@ class Trie {
     this.table = {}
   }
 
-  _getClosestNode (query: string): Node | null {
-    let node: Node = new Node({ socket: this.rootSocket })
+  remove (query: string): void {
 
-    for (let n = 0, len = query.length; n < len; n++) {
-      const char = query[n]
-
-      if (!node.socket[char]) {
-        return null
-      }
-
-      node = node.socket[char]
-    }
-
-    return node
   }
 
   /**
@@ -171,6 +159,22 @@ class Trie {
   */
   toJSON (): string {
     return JSON.stringify(this.toObject())
+  }
+
+  _getClosestNode (query: string): Node | null {
+    let node: Node = new Node({ socket: this.rootSocket })
+
+    for (let n = 0, len = query.length; n < len; n++) {
+      const char = query[n]
+
+      if (!node.socket[char]) {
+        return null
+      }
+
+      node = node.socket[char]
+    }
+
+    return node
   }
 }
 
