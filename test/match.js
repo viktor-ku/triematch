@@ -10,6 +10,7 @@ const $ = require('./lib/state')
 t.test('remove', t => {
   t.test('nothing here', t => {
     const store = new Store()
+    $.feed(store, $.state)
 
     const a = store.match('not in here')
     t.ok(Array.isArray(a))
@@ -35,8 +36,8 @@ t.test('remove', t => {
     const store = new Store()
     $.feed(store, $.state)
 
-    const a = store.match('Michael')
-    t.equal(a.length, 7)
+    const a = store.match($.Michael)
+    t.equal(a.length, $.names.length)
     t.equal(a.length, store.match('M').length)
 
     const o = store.toObject()
