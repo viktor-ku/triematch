@@ -110,7 +110,7 @@ t.test('Trie', t => {
     t.end()
   })
 
-  t.test('remove', t => {
+  t.test('remove leaf', t => {
     const store = new Store()
     feed(store, state)
 
@@ -138,6 +138,31 @@ t.test('Trie', t => {
       'o',
       'e',
       'a'
+    ])
+
+    t.end()
+  })
+
+  t.test('remove node with children', t => {
+    const store = new Store()
+    feed(store, state)
+
+    t.deepEqual(Object.keys(store._getClosestNode(MichaelJones).socket), [
+      'o'
+    ])
+
+    store.remove(MichaelJones)
+
+    t.equal(store.match('Mic').length, names.length - 1, 'match Mic length')
+    t.equal(store.match(MichaelJones).length, 1)
+    t.deepEqual(store.match(MichaelJones)[0], state.filter(x => x.name === MichaelJones))
+    t.equal(store.toArray().length, names.length - 1, 'toArray check')
+    t.notOk(store.toObject()[MichaelJones], 'toObject check')
+    t.notOk(store.get(MichaelJones))
+    t.notOk(store.table[MichaelJones], 'internal table check')
+
+    t.deepEqual(Object.keys(store._getClosestNode(MichaelJones).socket), [
+      'o'
     ])
 
     t.end()
