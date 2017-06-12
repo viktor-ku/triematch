@@ -25,7 +25,7 @@ npm install triematch
 Let's learn by example
 
 ```js
-const Store = require('trie.js')
+const Store = require('triematch')
 const store = new Store()
 ```
 
