@@ -1,18 +1,26 @@
-# trie.js
+# triematch
 
-> Fast Trie structure implementation with auto-complete function
+> Fast Trie structure implementation with matching feature
 
 ```bash
-npm install trie.js
+npm install triematch
 ```
 
 ## Features
 
--   `get`, `set`, `match` and `reset` key functions
--   Very fast auto-completion feature
--   Straightforward `API`
+- Very fast `get` and `match` (aka matching) functions
+- Straightforward `API`
+- No dependencies
+- Very tiny
+- Browser compatible (but not tested there just yet)
 
-## Get started
+## Roadmap
+
+- Add `Array` specific methods like maybe `pop`, `shift`, `forEach`, etc.
+- Performance improvements by hacking stuff
+- Add benchamrks and compare `triematch` with something similar
+
+## Examples
 
 Let's learn by example
 

@@ -1,32 +1,32 @@
 {
-  "name": "trie.js",
+  "name": "triematch",
   "version": "0.0.0",
-  "description": "Fast Trie structure implementation with autocomplete function",
+  "description": "Fast Trie structure implementation with matching feature",
   "main": "index.js",
   "scripts": {
     "test": "clear && tap -R dot test",
-    "build": "npm run build:docs && npm run build:code",
-    "build:docs": "documentation readme src/Trie.js --section API",
-    "build:code": "npm run clean && babel src -d dist",
-    "dev:docs": "documentation serve -w src/",
+    "build": "npm run clean && babel src -d dist",
+    "docs:build": "documentation readme src/Trie.js --section API",
+    "docs:serve": "documentation serve -w src/",
     "clean": "rm -rf dist",
     "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kuroljov/trie.js.git"
+    "url": "git+https://github.com/kuroljov/triematch.git"
   },
   "keywords": [
     "trie",
     "fast",
-    "autocomplete"
+    "autocomplete",
+    "matching"
   ],
   "author": "Viktor Kuroljov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kuroljov/trie.js/issues"
+    "url": "https://github.com/kuroljov/triematch/issues"
   },
-  "homepage": "https://github.com/kuroljov/trie.js#readme",
+  "homepage": "https://github.com/kuroljov/triematch#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
