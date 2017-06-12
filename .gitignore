@@ -1,3 +1,10 @@
+# sublime
+*.sublime-*
+
+# ignore
+*.tgz
+dist
+
 # Logs
 logs
 *.log
@@ -56,4 +63,3 @@ typings/
 
 # dotenv environment variables file
 .env
-

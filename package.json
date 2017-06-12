@@ -1,0 +1,45 @@
+{
+  "name": "trie.js",
+  "version": "0.0.0",
+  "description": "Fast Trie structure implementation with autocomplete function",
+  "main": "index.js",
+  "scripts": {
+    "test": "clear && tap -R dot test",
+    "build": "npm run build:docs && npm run build:code",
+    "build:docs": "documentation readme src/Trie.js --section API",
+    "build:code": "npm run clean && babel src -d dist",
+    "dev:docs": "documentation serve -w src/",
+    "clean": "rm -rf dist",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuroljov/trie.js.git"
+  },
+  "keywords": [
+    "trie",
+    "fast",
+    "autocomplete"
+  ],
+  "author": "Viktor Kuroljov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuroljov/trie.js/issues"
+  },
+  "homepage": "https://github.com/kuroljov/trie.js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-flow": "^6.23.0",
+    "documentation": "^4.0.0-rc.1",
+    "eslint": "^4.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-flowtype": "^2.34.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.47.0",
+    "tap": "^10.3.3"
+  }
+}
