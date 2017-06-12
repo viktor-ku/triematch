@@ -8,17 +8,17 @@ npm install triematch
 
 ## Features
 
-- Very fast `get` and `match` (aka matching) functions
-- Straightforward `API`
-- No dependencies
-- Very tiny
-- Browser compatible (but not tested there just yet)
+-   Very fast `get` and `match` (aka matching) functions
+-   Straightforward `API`
+-   No dependencies
+-   Very tiny
+-   Browser compatible (but not tested there just yet)
 
 ## Roadmap
 
-- Add `Array` specific methods like maybe `pop`, `shift`, `forEach`, etc.
-- Performance improvements by hacking stuff
-- Add benchamrks and compare `triematch` with something similar
+-   Add `Array` specific methods like maybe `pop`, `shift`, `forEach`, etc.
+-   Performance improvements by hacking stuff
+-   Add benchamrks and compare `triematch` with something similar
 
 ## Examples
 
@@ -142,6 +142,22 @@ store.set('Anton Webern', [])
 
 ```javascript
 store.set('Charles Best', function info () {})
+```
+
+Returns **void** 
+
+#### remove
+
+Remove value by a given key
+
+**Parameters**
+
+-   `query` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+**Examples**
+
+```javascript
+store.remove('Michael Jacobs')
 ```
 
 Returns **void** 
