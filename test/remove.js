@@ -10,10 +10,10 @@ const $ = require('./lib/state')
 t.test('remove', t => {
   t.test('unexisting thing', t => {
     const store = new Store()
-    $.feed(store, $.state)
+    $.feed(store, $.state.toArray())
 
-    store.remove('Michael J')
-    t.equal(store.match('Michael J').length, $.names.length)
+    store.remove($.Michael + ' J')
+    t.equal(store.match($.Michael).length, $.names.length)
 
     t.end()
   })
@@ -21,7 +21,8 @@ t.test('remove', t => {
   t.test('alone', t => {
     const store = new Store()
 
-    store.set($.MichaelJimenez)
+    store.set($.MichaelJimenez, $.state.toObject()[$.MichaelJimenez])
+
     store.remove($.MichaelJimenez)
 
     t.notOk(store.get($.MichaelJimenez))
@@ -32,58 +33,83 @@ t.test('remove', t => {
     t.end()
   })
 
-  t.test('leaf', t => {
+  t.test('node in the same branch', t => {
     const store = new Store()
-    $.feed(store, $.state)
 
-    t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
-      'o',
-      'i',
-      'e',
-      'a'
-    ])
+    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
+    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
 
-    store.remove($.MichaelJimenez)
+    store.remove($.MichaelJones)
 
-    t.equal(store.match('Mic').length, $.names.length - 1, 'match Mic length')
-    t.notOk(store.get($.MichaelJimenez), 'no more Michael Jimenez')
-    t.equal(store.toArray().length, $.names.length - 1, 'toArray check')
-    t.notOk(store.toObject()[$.MichaelJimenez], 'toObject check')
-    t.notOk(store.table[$.MichaelJimenez], 'internal table check')
-    t.notOk(store._getClosestNode('Michael Ji'))
-    t.notOk(store._getClosestNode('Michael Jim'))
-    t.notOk(store._getClosestNode('Michael Jime'))
-    t.notOk(store._getClosestNode('Michael Jimen'))
-    t.notOk(store._getClosestNode('Michael Jimene'))
-    t.notOk(store._getClosestNode('Michael Jimenez'))
-    t.deepEqual(Object.keys(store._getClosestNode('Michael J').socket), [
-      'o',
-      'e',
-      'a'
-    ])
+    t.notOk(store.get($.MichaelJones))
+    t.ok(store.get($.MichaelJoneson))
+    t.equal(store.match($.Michael).length, 1)
+
+    t.end()
+  })
+
+  t.test('leaf in the same branch', t => {
+    const store = new Store()
+
+    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
+    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+
+    store.remove($.MichaelJoneson)
+
+    t.notOk(store.get($.MichaelJoneson))
+    t.ok(store.get($.MichaelJones))
+    t.equal(store.match($.Michael).length, 1)
 
     t.end()
   })
 
   t.test('fork', t => {
     const store = new Store()
-    $.feed(store, $.state)
 
-    t.deepEqual(Object.keys(store._getClosestNode($.MichaelJones).socket), [
-      'o'
-    ])
+    store.set($.Michael, $.state.toObject()[$.Michael])
+    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
+    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+
+    store.remove($.Michael)
+
+    t.notOk(store.get($.Michael))
+    t.ok(store.get($.MichaelJones))
+    t.ok(store.get($.MichaelJoneson))
+    t.equal(store.match($.Michael).length, 2)
+
+    t.end()
+  })
+
+  t.test('leaf after fork', t => {
+    const store = new Store()
+
+    store.set($.Michael, $.state.toObject()[$.Michael])
+    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
+    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+
+    store.remove($.MichaelJoneson)
+
+    t.notOk(store.get($.MichaelJoneson))
+    t.ok(store.get($.Michael))
+    t.ok(store.get($.MichaelJones))
+    t.equal(store.match($.Michael).length, 2)
+
+    t.end()
+  })
+
+  t.test('node after fork', t => {
+    const store = new Store()
+
+    store.set($.Michael, $.state.toObject()[$.Michael])
+    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
+    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
 
     store.remove($.MichaelJones)
 
-    t.equal(store.match('Mic').length, $.names.length - 1, 'match Mic length')
-    t.equal(store.match($.MichaelJones).length, 1)
-    t.notOk(store.toObject()[$.MichaelJones], 'toObject check')
     t.notOk(store.get($.MichaelJones))
-    t.deepEqual(Object.keys(store._getClosestNode($.MichaelJones).socket), [
-      'o'
-    ])
+    t.ok(store.get($.Michael))
     t.ok(store.get($.MichaelJoneson))
-    t.equal(store.match('Michael Jon').length, 1)
+    t.equal(store.match($.Michael).length, 2)
 
     t.end()
   })

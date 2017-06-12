@@ -10,7 +10,7 @@ const $ = require('./lib/state')
 t.test('remove', t => {
   t.test('nothing here', t => {
     const store = new Store()
-    $.feed(store, $.state)
+    $.feed(store, $.state.toArray())
 
     const a = store.match('not in here')
     t.ok(Array.isArray(a))
@@ -23,7 +23,7 @@ t.test('remove', t => {
 
   t.test('exact match', t => {
     const store = new Store()
-    $.feed(store, $.state)
+    $.feed(store, $.state.toArray())
 
     const a = store.match($.MichaelJackson)
     t.equal(a.length, 1)
@@ -34,7 +34,7 @@ t.test('remove', t => {
 
   t.test('complete', t => {
     const store = new Store()
-    $.feed(store, $.state)
+    $.feed(store, $.state.toArray())
 
     const a = store.match($.Michael)
     t.equal(a.length, $.names.length)
@@ -49,12 +49,12 @@ t.test('remove', t => {
 
   t.test('complete#2', t => {
     const store = new Store()
-    $.feed(store, $.state)
+    $.feed(store, $.state.toArray())
 
     const a = store.match($.MichaelJones)
     t.equal(a.length, 2)
-    t.ok(a.includes($.state.filter(x => x.name === $.MichaelJones)[0]))
-    t.ok(a.includes($.state.filter(x => x.name === $.MichaelJoneson)[0]))
+    t.ok(a.includes($.state.toObject()[$.MichaelJones]))
+    t.ok(a.includes($.state.toObject()[$.MichaelJoneson]))
 
     t.end()
   })
