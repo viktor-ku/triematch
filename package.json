@@ -8,7 +8,7 @@
     "build": "npm run clean && babel src -d dist",
     "docs:build": "documentation readme src/Trie.js --section API",
     "docs:serve": "documentation serve -w src/",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist .nyc_output coverage *.tgz",
     "prepublish": "npm run build"
   },
   "repository": {
