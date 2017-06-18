@@ -18,7 +18,14 @@ npm install triematch
 
 -   Add `Array` specific methods like maybe `pop`, `shift`, `forEach`, etc.
 -   Performance improvements by hacking stuff
--   Add benchamrks and compare `triematch` with something similar
+-   Compare `triematch` with something similar
+
+## Benchmarks
+
+```bash
+npm install
+npm run bench
+```
 
 ## Examples
 
