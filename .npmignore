@@ -1,5 +1,7 @@
 src
 test
+data
+benchmark
 .babelrc
 .eslintrc.yml
 .npmignore
