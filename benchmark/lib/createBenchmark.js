@@ -8,8 +8,7 @@ const onStart = require('./onStart')
 
 type args = {
   name: string,
-  test: Function,
-  module: Object
+  test: Function
 }
 
 function createBenchmark (args: args) {
@@ -27,11 +26,10 @@ function createBenchmark (args: args) {
 
   const benchmark = new Benchmark(args.test(), options)
 
-  if (require.main === args.module) {
+  return () => new Promise((resolve, reject) => {
+    benchmark.on('complete', resolve)
     benchmark.run()
-  }
-
-  return benchmark
+  })
 }
 
 module.exports = createBenchmark

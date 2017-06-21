@@ -6,7 +6,7 @@ const chalk = require('chalk')
 
 const onComplete = (spinner: Object) => (e: Object) => {
   const bench = e.target
-  const hz = chalk.green(bench.hz)
+  const hz = chalk.green(parseInt(bench.hz, 10))
   const elapsed = chalk.green(bench.times.elapsed)
   const period = chalk.green(bench.times.period * 1000)
   const count = chalk.green(bench.count)

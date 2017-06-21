@@ -1,23 +1,26 @@
-// @flow
 'use strict'
 
 const fs = require('fs')
 const path = require('path')
+const runBenchmarks = require('./lib/runBenchmarks')
+const list = fs.readdirSync(__dirname).sort()
 
-const list = fs
-  .readdirSync(__dirname)
-  .filter(x => x !== 'index.js')
-  .filter(x => x !== 'lib')
-  .sort()
-  .map(name => require(path.resolve(__dirname, name)))
+main()
 
-list
-  .forEach((benchmark, i) => {
-    const nextBenchmark = list[i + 1]
+async function main () {
+  for (let n = 0, len = list.length; n < len; n++) {
+    const file = list[n]
 
-    if (nextBenchmark) {
-      benchmark.on('complete', () => nextBenchmark.run())
+    if (file.match(/index.js|lib/g)) {
+      continue
     }
-  })
 
-list[0].run()
+    const benchmarks = require(path.join(__dirname, file))
+
+    if (!Array.isArray(benchmarks)) {
+      continue
+    }
+
+    await runBenchmarks(benchmarks)
+  }
+}

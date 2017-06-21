@@ -3,10 +3,10 @@
 
 const createBenchmark = require('./lib/createBenchmark')
 const Store = require('../src/Trie')
+const runBenchmarks = require('./lib/runBenchmarks')
 
-const benchmark = createBenchmark({
-  module,
-  name: 'Trie.prototype.set',
+const a = createBenchmark({
+  name: 'set one item',
   test () {
     return () => {
       const store = new Store()
@@ -15,4 +15,10 @@ const benchmark = createBenchmark({
   }
 })
 
-module.exports = benchmark
+const benchmarks = [a]
+
+if (require.main === module) {
+  runBenchmarks(benchmarks)
+}
+
+module.exports = benchmarks
