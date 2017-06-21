@@ -6,6 +6,4 @@ node_js:
 before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get -qq update
-  - sudo apt-get -qq install g++-7.1.1
-env:
-  - CXX=g++-7.1.1
+  - sudo apt-get -qq install g++

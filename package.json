@@ -19,7 +19,9 @@
     "bench:set": "npm run benchone benchmark/set",
     "bench:toArray": "npm run benchone benchmark/toArray",
     "bench:toJSON": "npm run benchone benchmark/toJSON",
-    "bench:toObject": "npm run benchone benchmark/toObject"
+    "bench:toObject": "npm run benchone benchmark/toObject",
+    "clean:data": "rm -rf data/*.json",
+    "generate:data": "node data/generate-data"
   },
   "repository": {
     "type": "git",
