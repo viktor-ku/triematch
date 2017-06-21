@@ -9,7 +9,7 @@
     "docs:build": "documentation readme src/Trie.js --section API",
     "docs:serve": "documentation serve -w src/",
     "clean": "rm -rf dist .nyc_output coverage *.tgz",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "benchone": "clear && node -r babel-register",
     "bench": "npm run benchone benchmark",
     "bench:get": "npm run benchone benchmark/get",
