@@ -36,6 +36,14 @@ const a = [
         store.reset()
       }
     }
+  }),
+  createBenchmark({
+    name: 'reset (200k items store)',
+    test ({ store200k: store }) {
+      return () => {
+        store.reset()
+      }
+    }
   })
 ]
 

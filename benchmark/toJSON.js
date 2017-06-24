@@ -36,6 +36,14 @@ const a = [
         store.toJSON()
       }
     }
+  }),
+  createBenchmark({
+    name: 'toJSON (200k items store)',
+    test ({ store200k: store }) {
+      return () => {
+        store.toJSON()
+      }
+    }
   })
 ]
 

@@ -9,7 +9,7 @@ const a = [
     name: 'remove (0 items store)',
     test ({ store0: store }) {
       return () => {
-        store.remove('065-694-0552')
+        store.remove('What should I remove?')
       }
     }
   }),
@@ -17,7 +17,7 @@ const a = [
     name: 'remove (100 items store)',
     test ({ store100: store }) {
       return () => {
-        store.remove('741-003-1010')
+        store.remove('Todd Payne')
       }
     }
   }),
@@ -25,7 +25,7 @@ const a = [
     name: 'remove (1k items store)',
     test ({ store1k: store }) {
       return () => {
-        store.remove('265-212-0128')
+        store.remove('Todd Payne')
       }
     }
   }),
@@ -33,7 +33,23 @@ const a = [
     name: 'remove (50k items store)',
     test ({ store50k: store }) {
       return () => {
-        store.remove('065-694-0552')
+        store.remove('Todd Payne')
+      }
+    }
+  }),
+  createBenchmark({
+    name: 'remove (200k items store)',
+    test ({ store200k: store }) {
+      return () => {
+        store.remove('Todd Payne')
+      }
+    }
+  }),
+  createBenchmark({
+    name: 'remove on fork (200k items store)',
+    test ({ store200k: store }) {
+      return () => {
+        store.remove('Robert Williams')
       }
     }
   })

@@ -36,6 +36,14 @@ const a = [
         store.toArray()
       }
     }
+  }),
+  createBenchmark({
+    name: 'toArray (200k items store)',
+    test ({ store200k: store }) {
+      return () => {
+        store.toArray()
+      }
+    }
   })
 ]
 

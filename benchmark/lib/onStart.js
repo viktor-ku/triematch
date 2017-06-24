@@ -2,7 +2,7 @@
 'use strict'
 
 const onStart = (spinner: Object) => (e: Object) => {
-  spinner.start(`Benchmarking ${e.target.name}`)
+  spinner.start(e.target.name)
 }
 
 module.exports = onStart
