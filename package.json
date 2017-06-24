@@ -46,17 +46,17 @@
     "benchmark": "^2.1.4",
     "chalk": "^1.1.3",
     "documentation": "^4.0.0-rc.1",
-    "eslint": "^4.0.0",
+    "eslint": "^4.1.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-flowtype": "^2.34.0",
-    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "faker": "^4.1.0",
     "flow-bin": "^0.48.0",
     "ora": "^1.3.0",
-    "tap": "^10.5.1"
+    "tap": "^10.6.0"
   },
   "optionalDependencies": {
     "microtime": "^2.1.5"
