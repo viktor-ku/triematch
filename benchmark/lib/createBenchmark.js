@@ -20,17 +20,23 @@ data100.forEach(x => store100.set(x.number, x))
 data1k.forEach(x => store1k.set(x.number, x))
 data50k.forEach(x => store50k.set(x.number, x))
 
-type args = {
-  name: string,
-  test: Function
-}
+const spinner = new Ora({
+  spinner: 'bouncingBar',
+  color: 'green'
+})
 
-function createBenchmark (args: args) {
-  const spinner = new Ora({
-    spinner: 'bouncingBar',
-    color: 'green'
-  })
+const testArgs = [{
+  store0,
+  store100,
+  store1k,
+  store50k
+}, {
+  data100,
+  data1k,
+  data50k
+}]
 
+function createBenchmark (args: { name: string, test: Function }) {
   const options = {
     name: args.name,
     async: true,
@@ -38,14 +44,7 @@ function createBenchmark (args: args) {
     onComplete: onComplete(spinner)
   }
 
-  const testArgs = {
-    store0,
-    store100,
-    store1k,
-    store50k
-  }
-
-  const benchmark = new Benchmark(args.test(testArgs), options)
+  const benchmark = new Benchmark(args.test(...testArgs), options)
 
   return () => new Promise((resolve, reject) => {
     benchmark.on('complete', resolve)

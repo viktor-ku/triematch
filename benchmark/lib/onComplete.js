@@ -9,7 +9,7 @@ const onComplete = (spinner: Object) => (e: Object) => {
 
   spinner.succeed(`Finished in ${elapsed} seconds`)
 
-  console.log('    %s', chalk.blue(bench.toString()))
+  console.log('  %s', chalk.blue(bench.toString()))
 }
 
 module.exports = onComplete

@@ -2,49 +2,46 @@
 'use strict'
 
 const createBenchmark = require('./lib/createBenchmark')
-const Store = require('../src/Trie')
 const runBenchmarks = require('./lib/runBenchmarks')
-const fill = require('./lib/fill')
 
-const a = createBenchmark({
-  name: 'get (1k store)',
-  test () {
-    const store = new Store()
-    let total = 1000
-
-    while (total--) {
-      const item = fill()
-      store.set(item.name, item)
+const a = [
+  createBenchmark({
+    name: 'get (0 items store)',
+    test ({ store0: store }) {
+      return () => {
+        store.get('065-694-0552')
+      }
     }
-
-    store.set('Michael Jackson', 1)
-
-    return () => {
-      store.get('Michael Jackson')
+  }),
+  createBenchmark({
+    name: 'get (100 items store)',
+    test ({ store100: store }) {
+      return () => {
+        store.get('741-003-1010')
+      }
     }
-  }
-})
-
-const b = createBenchmark({
-  name: 'get (200k store)',
-  test () {
-    const store = new Store()
-    let total = 200000
-
-    while (total--) {
-      const item = fill()
-      store.set(item.name, item)
+  }),
+  createBenchmark({
+    name: 'get (1k items store)',
+    test ({ store1k: store }) {
+      return () => {
+        store.get('265-212-0128')
+      }
     }
-
-    store.set('Michael Jackson', 1)
-
-    return () => {
-      store.get('Michael Jackson')
+  }),
+  createBenchmark({
+    name: 'get (50k items store)',
+    test ({ store50k: store }) {
+      return () => {
+        store.get('065-694-0552')
+      }
     }
-  }
-})
+  })
+]
 
-const benchmarks = [a, b]
+const benchmarks = [
+  ...a
+]
 
 if (require.main === module) {
   runBenchmarks(benchmarks)

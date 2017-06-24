@@ -2,59 +2,46 @@
 'use strict'
 
 const createBenchmark = require('./lib/createBenchmark')
-const Store = require('../src/Trie')
 const runBenchmarks = require('./lib/runBenchmarks')
-const fill = require('./lib/fill')
 
-const a = createBenchmark({
-  name: 'toObject (1 item store)',
-  test () {
-    const store = new Store()
-    const item = fill()
-
-    store.set(item.name, item)
-
-    return () => {
-      store.toObject()
+const a = [
+  createBenchmark({
+    name: 'toObject (0 items store)',
+    test ({ store0: store }) {
+      return () => {
+        store.toObject()
+      }
     }
-  }
-})
-
-const b = createBenchmark({
-  name: 'toObject (1k store)',
-  test () {
-    const store = new Store()
-    let total = 1000
-
-    while (total--) {
-      const item = fill()
-      store.set(item.name, item)
+  }),
+  createBenchmark({
+    name: 'toObject (100 items store)',
+    test ({ store100: store }) {
+      return () => {
+        store.toObject()
+      }
     }
-
-    return () => {
-      store.toObject()
+  }),
+  createBenchmark({
+    name: 'toObject (1k items store)',
+    test ({ store1k: store }) {
+      return () => {
+        store.toObject()
+      }
     }
-  }
-})
-
-const c = createBenchmark({
-  name: 'toObject (200k store)',
-  test () {
-    const store = new Store()
-    let total = 200000
-
-    while (total--) {
-      const item = fill()
-      store.set(item.name, item)
+  }),
+  createBenchmark({
+    name: 'toObject (50k items store)',
+    test ({ store50k: store }) {
+      return () => {
+        store.toObject()
+      }
     }
+  })
+]
 
-    return () => {
-      store.toObject()
-    }
-  }
-})
-
-const benchmarks = [a, b, c]
+const benchmarks = [
+  ...a
+]
 
 if (require.main === module) {
   runBenchmarks(benchmarks)

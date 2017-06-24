@@ -2,59 +2,46 @@
 'use strict'
 
 const createBenchmark = require('./lib/createBenchmark')
-const Store = require('../src/Trie')
 const runBenchmarks = require('./lib/runBenchmarks')
-const fill = require('./lib/fill')
 
-const a = createBenchmark({
-  name: 'toArray (1 item store)',
-  test () {
-    const store = new Store()
-    const item = fill()
-
-    store.set(item.name, item)
-
-    return () => {
-      store.toArray()
+const a = [
+  createBenchmark({
+    name: 'toArray (0 items store)',
+    test ({ store0: store }) {
+      return () => {
+        store.toArray()
+      }
     }
-  }
-})
-
-const b = createBenchmark({
-  name: 'toArray (1k store)',
-  test () {
-    const store = new Store()
-    let total = 1000
-
-    while (total--) {
-      const item = fill()
-      store.set(item.name, item)
+  }),
+  createBenchmark({
+    name: 'toArray (100 items store)',
+    test ({ store100: store }) {
+      return () => {
+        store.toArray()
+      }
     }
-
-    return () => {
-      store.toArray()
+  }),
+  createBenchmark({
+    name: 'toArray (1k items store)',
+    test ({ store1k: store }) {
+      return () => {
+        store.toArray()
+      }
     }
-  }
-})
-
-const c = createBenchmark({
-  name: 'toArray (200k store)',
-  test () {
-    const store = new Store()
-    let total = 200000
-
-    while (total--) {
-      const item = fill()
-      store.set(item.name, item)
+  }),
+  createBenchmark({
+    name: 'toArray (50k items store)',
+    test ({ store50k: store }) {
+      return () => {
+        store.toArray()
+      }
     }
+  })
+]
 
-    return () => {
-      store.toArray()
-    }
-  }
-})
-
-const benchmarks = [a, b, c]
+const benchmarks = [
+  ...a
+]
 
 if (require.main === module) {
   runBenchmarks(benchmarks)

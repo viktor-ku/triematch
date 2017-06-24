@@ -105,6 +105,7 @@ class Trie {
 
     node.name = key
     node.value = value
+
     this.table[key] = node
   }
 
