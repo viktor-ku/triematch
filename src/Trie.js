@@ -195,14 +195,6 @@ class Trie {
     return arr
   }
 
-  /**
-    Return state converted to the JSON
-    @example store.toJSON()
-  */
-  toJSON (): string {
-    return JSON.stringify(this.toObject())
-  }
-
   _getClosestNode (query: string): Node | null {
     let node: Node = new Node({ socket: this.rootSocket })
 

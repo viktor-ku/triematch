@@ -204,15 +204,3 @@ store.toArray()
 ```
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>** 
-
-#### toJSON
-
-Return state converted to the JSON
-
-**Examples**
-
-```javascript
-store.toJSON()
-```
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
