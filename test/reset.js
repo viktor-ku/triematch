@@ -1,8 +1,6 @@
 // @flow
 'use strict'
 
-require('babel-register')
-
 const t = require('tap')
 const Store = require('../src/Trie')
 const $ = require('./lib/state')
