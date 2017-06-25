@@ -21,31 +21,20 @@ const names: Array<string> = [
   MichaelJacobs
 ]
 
-const state = {
-  _state: Array(names.length).fill().map((_, i) => ({
-    id: i + 1,
-    name: names[i]
-  })),
-  toObject () {
-    const obj = {}
-    this._state.forEach(x => {
-      obj[x.name] = x
-    })
-    return obj
-  },
-  toArray () {
-    return this._state
-  }
-}
+const state = new Map()
 
-function feed (store: Object, state: Array<Object>): void {
+names.forEach((name, i) => state.set(name, {
+  id: i + 1,
+  name
+}))
+
+function feed (store: Object): void {
   return state.forEach(x => store.set(x.name, x))
 }
 
 module.exports = {
   state,
   feed,
-  names,
   Michael,
   MichaelJoseph,
   MichaelJones,

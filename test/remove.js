@@ -8,10 +8,11 @@ const $ = require('./lib/state')
 t.test('remove', t => {
   t.test('unexisting thing', t => {
     const store = new Store()
-    $.feed(store, $.state.toArray())
+    $.feed(store)
 
-    store.remove($.Michael + ' J')
-    t.equal(store.match($.Michael).length, $.names.length)
+    store.remove('Not in here at all')
+    t.equal(store.match($.Michael).length, $.state.size)
+    t.equal(store.toArray().length, $.state.size)
 
     t.end()
   })
@@ -19,7 +20,7 @@ t.test('remove', t => {
   t.test('alone', t => {
     const store = new Store()
 
-    store.set($.MichaelJimenez, $.state.toObject()[$.MichaelJimenez])
+    store.set($.MichaelJimenez, $.state.get($.MichaelJimenez))
 
     store.remove($.MichaelJimenez)
 
@@ -34,8 +35,8 @@ t.test('remove', t => {
   t.test('node in the same branch', t => {
     const store = new Store()
 
-    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
-    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+    store.set($.MichaelJones, $.state.get($.MichaelJones))
+    store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
     store.remove($.MichaelJones)
 
@@ -49,8 +50,8 @@ t.test('remove', t => {
   t.test('leaf in the same branch', t => {
     const store = new Store()
 
-    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
-    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+    store.set($.MichaelJones, $.state.get($.MichaelJones))
+    store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
     store.remove($.MichaelJoneson)
 
@@ -64,9 +65,9 @@ t.test('remove', t => {
   t.test('fork', t => {
     const store = new Store()
 
-    store.set($.Michael, $.state.toObject()[$.Michael])
-    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
-    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+    store.set($.Michael, $.state.get($.Michael))
+    store.set($.MichaelJones, $.state.get($.MichaelJones))
+    store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
     store.remove($.Michael)
 
@@ -81,9 +82,9 @@ t.test('remove', t => {
   t.test('leaf after fork', t => {
     const store = new Store()
 
-    store.set($.Michael, $.state.toObject()[$.Michael])
-    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
-    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+    store.set($.Michael, $.state.get($.Michael))
+    store.set($.MichaelJones, $.state.get($.MichaelJones))
+    store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
     store.remove($.MichaelJoneson)
 
@@ -98,9 +99,9 @@ t.test('remove', t => {
   t.test('node after fork', t => {
     const store = new Store()
 
-    store.set($.Michael, $.state.toObject()[$.Michael])
-    store.set($.MichaelJones, $.state.toObject()[$.MichaelJones])
-    store.set($.MichaelJoneson, $.state.toObject()[$.MichaelJoneson])
+    store.set($.Michael, $.state.get($.Michael))
+    store.set($.MichaelJones, $.state.get($.MichaelJones))
+    store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
     store.remove($.MichaelJones)
 

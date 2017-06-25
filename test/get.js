@@ -8,24 +8,25 @@ const $ = require('./lib/state')
 t.test('get', t => {
   t.test('falsy', t => {
     const store = new Store()
-    $.feed(store, $.state.toArray())
+    $.feed(store)
 
-    t.notOk(store.get($.Michael + ' J'))
     t.notOk(store.get('foo'))
     t.notOk(store.get(null))
     t.notOk(store.get([]))
-    t.equal(store.get($.MichaelJackson).name, $.MichaelJackson)
+    t.notOk(store.get())
+    t.notOk(store.get(function foo () {}))
 
     t.end()
   })
 
   t.test('truthy', t => {
     const store = new Store()
-    $.feed(store, $.state.toArray())
+    $.feed(store)
 
-    $.names.forEach(name => {
-      const result = store.get(name)
-      t.deepEqual(result, $.state.toObject()[name], name)
+    $.state.forEach(item => {
+      const name = item.name
+      const man = store.get(name)
+      t.deepEqual(man, $.state.get(name), name)
     })
 
     t.end()

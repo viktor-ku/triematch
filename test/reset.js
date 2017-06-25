@@ -7,15 +7,13 @@ const $ = require('./lib/state')
 
 t.test('reset', t => {
   const store = new Store()
-  $.feed(store, $.state.toArray())
+  $.feed(store)
 
-  t.equal(store.toArray().length, $.names.length, 'before reset')
-  t.ok(store.get($.MichaelJackson))
+  t.equal(store.toArray().length, $.state.size, 'before reset')
 
   store.reset()
 
   t.equal(store.toArray().length, 0, 'after reset')
-  t.notOk(store.get($.MichaelJackson))
 
   t.end()
 })
