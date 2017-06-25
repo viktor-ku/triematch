@@ -29,6 +29,7 @@ const spinner = new Ora({
 })
 
 const testArgs = [{
+  Store,
   store0,
   store100,
   store1k,
