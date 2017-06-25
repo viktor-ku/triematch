@@ -11,3 +11,4 @@ benchmark
 *.tgz
 .nyc_output
 coverage
+*.log
