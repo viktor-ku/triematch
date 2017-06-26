@@ -3,10 +3,14 @@
 
 const createBenchmark = require('./lib/createBenchmark')
 const runBenchmarks = require('./lib/runBenchmarks')
+const name = 'set'
+const state = require('./lib/state')
+const table = require('./lib/table')
 
 const a = [
   createBenchmark({
-    name: 'set (new store each cycle)',
+    name,
+    id: 'new store each cycle',
     test ({ Store }, { data100: data }) {
       const man = data[0]
       const name = man.name
@@ -18,7 +22,8 @@ const a = [
     }
   }),
   createBenchmark({
-    name: 'set (on existing store)',
+    name,
+    id: 'on existing store',
     test ({ store100: store }, { data100: data }) {
       const man = data[0]
       const name = man.name
@@ -35,7 +40,15 @@ const benchmarks = [
 ]
 
 if (require.main === module) {
-  runBenchmarks(benchmarks)
+  runBenchmarks({
+    name,
+    benchmarks,
+    state,
+    table
+  })
 }
 
-module.exports = benchmarks
+module.exports = {
+  name,
+  benchmarks
+}

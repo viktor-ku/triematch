@@ -3,10 +3,14 @@
 
 const createBenchmark = require('./lib/createBenchmark')
 const runBenchmarks = require('./lib/runBenchmarks')
+const name = 'match'
+const state = require('./lib/state')
+const table = require('./lib/table')
 
 const a = [
   createBenchmark({
-    name: 'match#exact (on 100 items store)',
+    name,
+    id: 'exact match on 100 items store',
     test ({ store100: store }) {
       return () => {
         store.match('Virginia Harrington')
@@ -14,7 +18,8 @@ const a = [
     }
   }),
   createBenchmark({
-    name: 'match#exact (on 1k items store)',
+    name,
+    id: 'exact match on 1k items store',
     test ({ store1k: store }) {
       return () => {
         store.match('Virginia Harrington')
@@ -22,7 +27,8 @@ const a = [
     }
   }),
   createBenchmark({
-    name: 'match#exact (on 50k items store)',
+    name,
+    id: 'exact match on 50k items store',
     test ({ store50k: store }) {
       return () => {
         store.match('Virginia Harrington')
@@ -30,7 +36,8 @@ const a = [
     }
   }),
   createBenchmark({
-    name: 'match#exact (on 200k items store)',
+    name,
+    id: 'exact match on 200k items store',
     test ({ store200k: store }) {
       return () => {
         store.match('Virginia Harrington')
@@ -41,7 +48,8 @@ const a = [
 
 const b = [
   createBenchmark({
-    name: 'match (8 matches on 100 items store)',
+    name,
+    id: '8 matches on 100 items store',
     test ({ store100: store }) {
       return () => {
         store.match('A')
@@ -49,7 +57,8 @@ const b = [
     }
   }),
   createBenchmark({
-    name: 'match (19 matches on 1k items store)',
+    name,
+    id: '19 matches on 1k items store',
     test ({ store1k: store }) {
       return () => {
         store.match('Al')
@@ -57,7 +66,8 @@ const b = [
     }
   }),
   createBenchmark({
-    name: 'match (190 matches on 50k items store)',
+    name,
+    id: '190 matches on 50k items store',
     test ({ store50k: store }) {
       return () => {
         store.match('Alex')
@@ -65,7 +75,8 @@ const b = [
     }
   }),
   createBenchmark({
-    name: 'match (554 matches on 200k items store)',
+    name,
+    id: '554 matches on 200k items store',
     test ({ store200k: store }) {
       return () => {
         store.match('Mich')
@@ -76,7 +87,8 @@ const b = [
 
 const c = [
   createBenchmark({
-    name: 'match (0 items store)',
+    name,
+    id: '0 items store',
     test ({ store0: store }) {
       return () => {
         store.match('Is this a joke?')
@@ -92,7 +104,15 @@ const benchmarks = [
 ]
 
 if (require.main === module) {
-  runBenchmarks(benchmarks)
+  runBenchmarks({
+    name,
+    benchmarks,
+    state,
+    table
+  })
 }
 
-module.exports = benchmarks
+module.exports = {
+  name,
+  benchmarks
+}

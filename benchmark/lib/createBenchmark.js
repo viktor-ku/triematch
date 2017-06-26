@@ -2,7 +2,6 @@
 'use strict'
 
 const Benchmark = require('benchmark')
-const Ora = require('ora')
 const onComplete = require('./onComplete')
 const onStart = require('./onStart')
 const Store = require('../../src/Trie')
@@ -23,11 +22,6 @@ data1k.forEach(x => store1k.set(x.name, x))
 data50k.forEach(x => store50k.set(x.name, x))
 data200k.forEach(x => store200k.set(x.name, x))
 
-const spinner = new Ora({
-  spinner: 'bouncingBar',
-  color: 'green'
-})
-
 const testArgs = [{
   Store,
   store0,
@@ -42,17 +36,24 @@ const testArgs = [{
   data200k
 }]
 
-function createBenchmark (args: { name: string, test: Function }) {
+type createBenchmarkArgs = {
+  name: string,
+  id: string,
+  test: Function
+}
+
+function createBenchmark (args: createBenchmarkArgs) {
   const options = {
     name: args.name,
+    id: args.id,
     async: true,
-    onStart: onStart(spinner),
-    onComplete: onComplete(spinner)
+    onStart,
+    onComplete
   }
 
   const benchmark = new Benchmark(args.test(...testArgs), options)
 
-  return () => new Promise((resolve, reject) => {
+  return (): Promise<*> => new Promise((resolve, reject) => {
     benchmark.on('complete', resolve)
     benchmark.run()
   })
