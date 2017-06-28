@@ -67,10 +67,28 @@ const b = [
   }),
   createBenchmark({
     name,
-    id: '190 matches on 50k items store',
+    id: '7 matches on 50k items store',
     test ({ store50k: store }) {
       return () => {
-        store.match('Alex')
+        store.match('John A')
+      }
+    }
+  }),
+  createBenchmark({
+    name,
+    id: '483 matches on 50k items store',
+    test ({ store50k: store }) {
+      return () => {
+        store.match('Jos')
+      }
+    }
+  }),
+  createBenchmark({
+    name,
+    id: '9 matches on 200k items store',
+    test ({ store200k: store }) {
+      return () => {
+        store.match('Michael A')
       }
     }
   }),
