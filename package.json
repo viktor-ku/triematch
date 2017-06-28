@@ -6,19 +6,17 @@
   "scripts": {
     "test": "clear && babel-node test/index.js | tap -R dot -",
     "build": "npm run clean && babel src -d dist",
-    "docs:build": "documentation readme src/Trie.js --section API",
     "docs:serve": "documentation serve -w src/",
+    "docs:build": "documentation build src/Trie.js -f html -o docs",
     "clean": "rm -rf dist .nyc_output coverage *.tgz",
     "prepublishOnly": "npm run build",
+    "clean:results": "rm -rf benchmark/results",
     "benchone": "clear && babel-node",
     "bench": "npm run benchone benchmark",
     "bench:get": "npm run benchone benchmark/get",
     "bench:match": "npm run benchone benchmark/match",
-    "bench:remove": "npm run benchone benchmark/remove",
-    "bench:reset": "npm run benchone benchmark/reset",
     "bench:set": "npm run benchone benchmark/set",
     "bench:toArray": "npm run benchone benchmark/toArray",
-    "bench:toJSON": "npm run benchone benchmark/toJSON",
     "bench:toObject": "npm run benchone benchmark/toObject"
   },
   "repository": {
