@@ -3,9 +3,9 @@
     "cpu": "4 x Intel(R) Core(TM) i5-2500 CPU @ 3.30GHz",
     "arch": "Linux x64",
     "totalmem": "7.72Gb",
-    "benchmarkId": "b4b9bf999bf8316b",
-    "date": "Wed Jun 28 2017 08:52:52 GMT+0300 (EEST)",
-    "version": "1.1.0",
+    "benchmarkId": "389ae1eff7f77e31",
+    "date": "Wed Jun 28 2017 10:50:58 GMT+0300 (EEST)",
+    "version": "1.1.1",
     "versions": {
       "http_parser": "2.7.0",
       "node": "8.1.2",
@@ -26,15 +26,15 @@
       "name": "get",
       "id": "0 items store",
       "hz": {
-        "value": 68654283.07663666,
+        "value": 74703533.8039778,
         "label": "ops/sec"
       },
       "rme": {
-        "value": 0.5279248669506904,
+        "value": 0.6146613438923242,
         "label": "±%"
       },
       "elapsed": {
-        "value": 6.161,
+        "value": 6.163,
         "label": "seconds"
       },
       "samples": {
@@ -42,7 +42,7 @@
         "label": "runs sampled"
       },
       "mean": {
-        "value": 0.000014565733632142525,
+        "value": 0.000013386247598728084,
         "label": "ms"
       }
     },
@@ -50,39 +50,15 @@
       "name": "get",
       "id": "100 items store",
       "hz": {
-        "value": 37251050.538525954,
+        "value": 40198149.250933364,
         "label": "ops/sec"
       },
       "rme": {
-        "value": 0.5318071090377261,
+        "value": 1.7705921287189925,
         "label": "±%"
       },
       "elapsed": {
-        "value": 6.014,
-        "label": "seconds"
-      },
-      "samples": {
-        "value": 86,
-        "label": "runs sampled"
-      },
-      "mean": {
-        "value": 0.000026844880494464858,
-        "label": "ms"
-      }
-    },
-    {
-      "name": "get",
-      "id": "1k items store",
-      "hz": {
-        "value": 36816324.1894087,
-        "label": "ops/sec"
-      },
-      "rme": {
-        "value": 0.4654088223635786,
-        "label": "±%"
-      },
-      "elapsed": {
-        "value": 5.948,
+        "value": 6.032,
         "label": "seconds"
       },
       "samples": {
@@ -90,23 +66,23 @@
         "label": "runs sampled"
       },
       "mean": {
-        "value": 0.00002716186425497849,
+        "value": 0.00002487676718043881,
         "label": "ms"
       }
     },
     {
       "name": "get",
-      "id": "50k items store",
+      "id": "1k items store",
       "hz": {
-        "value": 37354970.75942478,
+        "value": 40959725.863812394,
         "label": "ops/sec"
       },
       "rme": {
-        "value": 0.3819145505625059,
+        "value": 0.32710296131932165,
         "label": "±%"
       },
       "elapsed": {
-        "value": 5.984,
+        "value": 5.951,
         "label": "seconds"
       },
       "samples": {
@@ -114,23 +90,23 @@
         "label": "runs sampled"
       },
       "mean": {
-        "value": 0.000026770198976737166,
+        "value": 0.000024414225898994416,
         "label": "ms"
       }
     },
     {
       "name": "get",
-      "id": "200k items store",
+      "id": "50k items store",
       "hz": {
-        "value": 37661571.72538317,
+        "value": 41011035.76658024,
         "label": "ops/sec"
       },
       "rme": {
-        "value": 0.4974775515417853,
+        "value": 0.2900810469011744,
         "label": "±%"
       },
       "elapsed": {
-        "value": 5.958,
+        "value": 5.978,
         "label": "seconds"
       },
       "samples": {
@@ -138,7 +114,31 @@
         "label": "runs sampled"
       },
       "mean": {
-        "value": 0.00002655226412991201,
+        "value": 0.00002438368066809219,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "get",
+      "id": "200k items store",
+      "hz": {
+        "value": 41068703.42363997,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.2310134237722893,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 6.038,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 95,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.000024349441707097575,
         "label": "ms"
       }
     }
