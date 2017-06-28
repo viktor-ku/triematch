@@ -8,6 +8,7 @@ npm install triematch
 
 - [Features](#features)
 - [Roadmap](#roadmap)
+- [Changelog](#changelog)
 - [Benchmarks](#benchmarks)
 - [How its working](#how-its-working)
 - [Get Started](#get-started)
@@ -27,10 +28,13 @@ npm install triematch
 -   Performance improvements by hacking stuff
 -   Compare `triematch` with something similar
 
+## Changelog
+
+Checkout [changelog](CHANGELOG.md)
+
 ## Benchmarks
 
-- Intel i5-2500
-- GNU/Linux x64
+In each file you will find meta information and results
 
 [benchmark/results](benchmark/results)
 
