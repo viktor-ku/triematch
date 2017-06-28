@@ -3,7 +3,6 @@
 
 const Benchmark = require('benchmark')
 const onComplete = require('./onComplete')
-const onStart = require('./onStart')
 const Store = require('../../src/Trie')
 
 const data100 = require('../../data/store-100.json')
@@ -47,7 +46,6 @@ function createBenchmark (args: createBenchmarkArgs) {
     name: args.name,
     id: args.id,
     async: true,
-    onStart,
     onComplete
   }
 

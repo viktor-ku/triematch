@@ -30,7 +30,7 @@ async function runBenchmark (args: args) {
     console.log(args.table.toString())
   }
 
-  createFile(args.name + '.json', args.state)
+  createFile({ name: args.name, state: args.state })
 }
 
 module.exports = runBenchmark
