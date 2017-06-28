@@ -2,6 +2,7 @@ src
 test
 data
 benchmark
+docs
 .babelrc
 .eslintrc.yml
 .npmignore
@@ -12,3 +13,4 @@ benchmark
 .nyc_output
 coverage
 *.log
+.travis.yml
