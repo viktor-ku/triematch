@@ -2,6 +2,10 @@
 
 Notable changes only
 
+### 1.1.1
+
+- Move `microtime` which is a dev dependency over to a `devDependencies` from `optionalDependencies`
+
 ### 1.1.0
 
 - Add benchmarks
