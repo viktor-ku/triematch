@@ -44,18 +44,16 @@
     "chalk": "^1.1.3",
     "cli-table": "^0.3.1",
     "documentation": "^4.0.0-rc.1",
-    "eslint": "^4.1.0",
+    "eslint": "^4.1.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-flowtype": "^2.34.0",
     "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.48.0",
+    "microtime": "^2.1.5",
     "progress": "^2.0.0",
     "tap": "^10.7.0"
-  },
-  "optionalDependencies": {
-    "microtime": "^2.1.5"
   }
 }
