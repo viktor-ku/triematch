@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "cpu": "4 x Intel(R) Core(TM) i5-2500 CPU @ 3.30GHz",
+    "arch": "Linux x64",
+    "totalmem": "7.72Gb",
+    "benchmarkId": "b4b9bf999bf8316b",
+    "date": "Wed Jun 28 2017 08:52:52 GMT+0300 (EEST)",
+    "version": "1.1.0",
+    "versions": {
+      "http_parser": "2.7.0",
+      "node": "8.1.2",
+      "v8": "5.8.283.41",
+      "uv": "1.12.0",
+      "zlib": "1.2.11",
+      "ares": "1.10.1-DEV",
+      "modules": "57",
+      "openssl": "1.0.2l",
+      "icu": "59.1",
+      "unicode": "9.0",
+      "cldr": "31.0.1",
+      "tz": "2017b"
+    }
+  },
+  "benchmarks": [
+    {
+      "name": "get",
+      "id": "0 items store",
+      "hz": {
+        "value": 68654283.07663666,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.5279248669506904,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 6.161,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 93,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.000014565733632142525,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "get",
+      "id": "100 items store",
+      "hz": {
+        "value": 37251050.538525954,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.5318071090377261,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 6.014,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 86,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.000026844880494464858,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "get",
+      "id": "1k items store",
+      "hz": {
+        "value": 36816324.1894087,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.4654088223635786,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.948,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 92,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.00002716186425497849,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "get",
+      "id": "50k items store",
+      "hz": {
+        "value": 37354970.75942478,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.3819145505625059,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.984,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 89,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.000026770198976737166,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "get",
+      "id": "200k items store",
+      "hz": {
+        "value": 37661571.72538317,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.4974775515417853,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.958,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 91,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.00002655226412991201,
+        "label": "ms"
+      }
+    }
+  ]
+}

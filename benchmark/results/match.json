@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "cpu": "4 x Intel(R) Core(TM) i5-2500 CPU @ 3.30GHz",
+    "arch": "Linux x64",
+    "totalmem": "7.72Gb",
+    "benchmarkId": "b4b9bf999bf8316b",
+    "date": "Wed Jun 28 2017 08:52:52 GMT+0300 (EEST)",
+    "version": "1.1.0",
+    "versions": {
+      "http_parser": "2.7.0",
+      "node": "8.1.2",
+      "v8": "5.8.283.41",
+      "uv": "1.12.0",
+      "zlib": "1.2.11",
+      "ares": "1.10.1-DEV",
+      "modules": "57",
+      "openssl": "1.0.2l",
+      "icu": "59.1",
+      "unicode": "9.0",
+      "cldr": "31.0.1",
+      "tz": "2017b"
+    }
+  },
+  "benchmarks": [
+    {
+      "name": "match",
+      "id": "exact match on 100 items store",
+      "hz": {
+        "value": 715623.9665577173,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.36637545762785284,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 6.174,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 88,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.0013973819306390529,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "exact match on 1k items store",
+      "hz": {
+        "value": 694138.7667376453,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.37862928686855096,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.915,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 92,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.0014406341324226272,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "exact match on 50k items store",
+      "hz": {
+        "value": 710313.1020831695,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.8205539392924547,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.866,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 85,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.0014078298669519846,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "exact match on 200k items store",
+      "hz": {
+        "value": 693139.8996495563,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 1.8128309651193508,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.91,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 86,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.0014427101953091847,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "8 matches on 100 items store",
+      "hz": {
+        "value": 64140.29500568339,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.6244015977354727,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.929,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 89,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.015590823208895302,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "19 matches on 1k items store",
+      "hz": {
+        "value": 35669.38599343749,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 1.1676736347179146,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.896,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 90,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.02803524569175319,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "7 matches on 50k items store",
+      "hz": {
+        "value": 120597.59182326542,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 1.1746295464318826,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.849,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 88,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.008292039541432055,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "483 matches on 50k items store",
+      "hz": {
+        "value": 1715.986476424309,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 1.504127693803263,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.861,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 78,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.5827551753693027,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "9 matches on 200k items store",
+      "hz": {
+        "value": 97619.54911221843,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.5254754906165079,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.839,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 91,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.010243849813836482,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "554 matches on 200k items store",
+      "hz": {
+        "value": 1575.468830066137,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.6866862799264352,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.741,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 81,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.6347316944112571,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "match",
+      "id": "0 items store",
+      "hz": {
+        "value": 4327467.776675979,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 1.03248823206519,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.865,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 86,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.00023108202108165012,
+        "label": "ms"
+      }
+    }
+  ]
+}

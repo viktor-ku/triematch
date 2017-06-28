@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "cpu": "4 x Intel(R) Core(TM) i5-2500 CPU @ 3.30GHz",
+    "arch": "Linux x64",
+    "totalmem": "7.72Gb",
+    "benchmarkId": "b4b9bf999bf8316b",
+    "date": "Wed Jun 28 2017 08:52:52 GMT+0300 (EEST)",
+    "version": "1.1.0",
+    "versions": {
+      "http_parser": "2.7.0",
+      "node": "8.1.2",
+      "v8": "5.8.283.41",
+      "uv": "1.12.0",
+      "zlib": "1.2.11",
+      "ares": "1.10.1-DEV",
+      "modules": "57",
+      "openssl": "1.0.2l",
+      "icu": "59.1",
+      "unicode": "9.0",
+      "cldr": "31.0.1",
+      "tz": "2017b"
+    }
+  },
+  "benchmarks": [
+    {
+      "name": "set",
+      "id": "new store each cycle",
+      "hz": {
+        "value": 165218.28340771966,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 18.535995906085617,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 6.332,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 66,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.006052598897497539,
+        "label": "ms"
+      }
+    },
+    {
+      "name": "set",
+      "id": "on existing store",
+      "hz": {
+        "value": 937878.4058464767,
+        "label": "ops/sec"
+      },
+      "rme": {
+        "value": 0.6660660647587716,
+        "label": "±%"
+      },
+      "elapsed": {
+        "value": 5.922,
+        "label": "seconds"
+      },
+      "samples": {
+        "value": 90,
+        "label": "runs sampled"
+      },
+      "mean": {
+        "value": 0.0010662362986142706,
+        "label": "ms"
+      }
+    }
+  ]
+}
