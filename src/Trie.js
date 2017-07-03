@@ -125,6 +125,7 @@ class Trie {
     if (endSockets) {
       delete end.name
       delete end.value
+      delete this.table[query]
       return
     }
 
