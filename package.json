@@ -1,6 +1,6 @@
 {
   "name": "triematch",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Fast Trie structure implementation with matching feature",
   "main": "index.js",
   "scripts": {
