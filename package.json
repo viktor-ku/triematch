@@ -52,7 +52,6 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.48.0",
-    "microtime": "^2.1.5",
     "progress": "^2.0.0",
     "tap": "^10.7.0"
   }
