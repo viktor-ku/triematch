@@ -5,6 +5,7 @@ Notable changes only
 ### 1.1.2
 
 - Fix an issue when after removing a node the table was pointing to the empty node
+- Add `node:4` to the travis
 - Update `devDeps`
 - Remove `microtime` so installing `devDeps` should now be just fine
 
