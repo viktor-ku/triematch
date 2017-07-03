@@ -2,6 +2,12 @@
 
 Notable changes only
 
+### 1.1.2
+
+- Fix an issue when after removing a node the table was pointing to the empty node
+- Update `devDeps`
+- Remove `microtime` so installing `devDeps` should now be just fine
+
 ### 1.1.1
 
 - Move `microtime` which is a dev dependency over to a `devDependencies` from `optionalDependencies`
