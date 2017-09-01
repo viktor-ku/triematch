@@ -9,10 +9,8 @@
     "docs:serve": "documentation serve -w src/",
     "docs:build": "documentation build src/Trie.js -f html -o docs",
     "clean": "rm -rf dist .nyc_output coverage *.tgz",
-    "version": "npm run clean:results && npm run docs:build && npm run bench && git add benchmark/results docs",
-    "prepack": "npm run build",
-    "clean:results": "rm -rf benchmark/results",
-    "bench:toObject": "npm run benchone benchmark/toObject"
+    "version": "npm run clean && npm run docs:build && git add docs",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
