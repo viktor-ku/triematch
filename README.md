@@ -32,19 +32,6 @@ npm install triematch
 
 Checkout [changelog](CHANGELOG.md)
 
-## Benchmarks
-
-In each file you will find meta information and results
-
-[benchmark/results](benchmark/results)
-
-#### How to run yourself
-
-```bash
-npm install
-npm run bench
-```
-
 ## How its working
 
 I call it `Store` because it is essentially a store like `Map` or `Set` but its algorithm is different. Basically it stores each char in a separate node that has reference to the next node with char and so on and so forth. In addition to that it has table with keys pointing to the nodes with values so something like `get` function happens to perform as fast as getting property of the plain `Object`.
@@ -66,7 +53,7 @@ store.set('Michael Jacobs', [5, 5, 4, 7])
 store.set('Michael Jackson', () => 'Moonwalk')
 ```
 
-We can use `get` function to get exactly that item that was inserted by 
+We can use `get` function to get exactly that item that was inserted by
 this `key` before
 
 ```js
