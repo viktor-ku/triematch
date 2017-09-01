@@ -37,22 +37,22 @@
   },
   "homepage": "https://github.com/kuroljov/triematch#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-preset-flow": "^6.23.0",
     "benchmark": "^2.1.4",
-    "chalk": "^2.0.1",
+    "chalk": "^2.1.0",
     "cli-table": "^0.3.1",
-    "documentation": "^4.0.0-rc.1",
-    "eslint": "^4.1.1",
+    "documentation": "^5.2.2",
+    "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-flowtype": "^2.34.1",
-    "eslint-plugin-import": "^2.6.1",
-    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.35.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "flow-bin": "^0.49.1",
+    "flow-bin": "^0.54.0",
     "progress": "^2.0.0",
-    "tap": "^10.7.0"
+    "tap": "^10.7.2"
   }
 }
