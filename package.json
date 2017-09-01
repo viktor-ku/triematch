@@ -12,12 +12,6 @@
     "version": "npm run clean:results && npm run docs:build && npm run bench && git add benchmark/results docs",
     "prepack": "npm run build",
     "clean:results": "rm -rf benchmark/results",
-    "benchone": "clear && babel-node",
-    "bench": "npm run benchone benchmark",
-    "bench:get": "npm run benchone benchmark/get",
-    "bench:match": "npm run benchone benchmark/match",
-    "bench:set": "npm run benchone benchmark/set",
-    "bench:toArray": "npm run benchone benchmark/toArray",
     "bench:toObject": "npm run benchone benchmark/toObject"
   },
   "repository": {
