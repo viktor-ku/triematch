@@ -32,9 +32,6 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-preset-flow": "^6.23.0",
-    "benchmark": "^2.1.4",
-    "chalk": "^2.1.0",
-    "cli-table": "^0.3.1",
     "documentation": "^5.2.2",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
@@ -44,7 +41,6 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.54.0",
-    "progress": "^2.0.0",
     "tap": "^10.7.2"
   }
 }

@@ -9,8 +9,7 @@ npm install triematch
 - [Features](#features)
 - [Roadmap](#roadmap)
 - [Changelog](#changelog)
-- [Benchmarks](#benchmarks)
-- [How its working](#how-its-working)
+- [How it works](#how-it-works)
 - [Get Started](#get-started)
 - [License](#license)
 
@@ -32,7 +31,7 @@ npm install triematch
 
 Checkout [changelog](CHANGELOG.md)
 
-## How its working
+## How it works
 
 I call it `Store` because it is essentially a store like `Map` or `Set` but its algorithm is different. Basically it stores each char in a separate node that has reference to the next node with char and so on and so forth. In addition to that it has table with keys pointing to the nodes with values so something like `get` function happens to perform as fast as getting property of the plain `Object`.
 

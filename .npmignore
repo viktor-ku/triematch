@@ -1,8 +1,8 @@
-src
-test
-data
-benchmark
-docs
+src/
+test/
+docs/
+coverage/
+
 .babelrc
 .eslintrc.yml
 .npmignore
@@ -11,6 +11,5 @@ docs
 *.sublime-*
 *.tgz
 .nyc_output
-coverage
 *.log
 .travis.yml

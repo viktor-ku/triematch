@@ -1,8 +1,6 @@
-dist
-logs
-coverage
-build/Release
-node_modules
+dist/
+coverage/
+node_modules/
 
 .npm
 *.tgz
