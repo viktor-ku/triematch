@@ -6,7 +6,8 @@ class Node {
   value: Object
   name: string
 
-  constructor (args?: { socket?: Object } = {}) {
+  constructor (args?: Object) {
+    args = args || {}
     this.socket = args.socket || {}
   }
 }

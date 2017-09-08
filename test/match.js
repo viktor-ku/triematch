@@ -38,7 +38,9 @@ t.test('match', t => {
 
     const o = store.toObject()
     const k = Object.keys(o)
-    $.state.forEach(man => t.ok(k.includes(man.name), man.name))
+    $.state.forEach(man => {
+      t.ok(k.some(key => key === man.name))
+    })
 
     t.end()
   })
@@ -49,8 +51,8 @@ t.test('match', t => {
 
     const a = store.match($.MichaelJones)
     t.equal(a.length, 2)
-    t.ok(a.includes($.state.get($.MichaelJones)))
-    t.ok(a.includes($.state.get($.MichaelJoneson)))
+    t.ok(a.some(x => x === $.state.get($.MichaelJones)))
+    t.ok(a.some(x => x === $.state.get($.MichaelJoneson)))
 
     t.end()
   })

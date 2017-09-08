@@ -42,7 +42,7 @@ t.test('remove', t => {
     store.remove($.MichaelJones)
 
     t.equal(Object.keys(store.table).length, 1)
-    t.notOk(Object.keys(store.table).includes($.MichaelJones))
+    t.notOk(Object.keys(store.table).some(x => x === $.MichaelJones))
     t.notOk(store.get($.MichaelJones))
     t.ok(store.get($.MichaelJoneson))
     t.equal(store.match($.Michael).length, 1)
@@ -75,7 +75,7 @@ t.test('remove', t => {
     store.remove($.Michael)
 
     t.equal(Object.keys(store.table).length, 2)
-    t.notOk(Object.keys(store.table).includes($.Michael))
+    t.notOk(Object.keys(store.table).some(x => x === $.Michael))
     t.notOk(store.get($.Michael))
     t.ok(store.get($.MichaelJones))
     t.ok(store.get($.MichaelJoneson))
@@ -111,7 +111,7 @@ t.test('remove', t => {
     store.remove($.MichaelJones)
 
     t.equal(Object.keys(store.table).length, 2)
-    t.notOk(Object.keys(store.table).includes($.MichaelJones))
+    t.notOk(Object.keys(store.table).some(x => x === $.MichaelJones))
     t.notOk(store.get($.MichaelJones))
     t.ok(store.get($.Michael))
     t.ok(store.get($.MichaelJoneson))
