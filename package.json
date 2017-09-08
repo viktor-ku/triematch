@@ -4,7 +4,8 @@
   "description": "Fast Trie structure implementation with matching feature",
   "main": "index.js",
   "scripts": {
-    "test": "clear && babel-node test/index.js | tap -R dot -",
+    "test": "clear && tap test/index.js",
+    "cov": "npm t -- --cov",
     "build": "npm run clean && babel src -d dist",
     "docs:serve": "documentation serve -w src/",
     "docs:build": "documentation build src/Trie.js -f html -o docs",

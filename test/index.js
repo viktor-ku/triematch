@@ -1,6 +1,8 @@
 // @flow
 'use strict'
 
+require('babel-register')
+
 require('./set')
 require('./get')
 require('./match')
