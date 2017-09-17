@@ -42,6 +42,7 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "sinon": "^3.2.1",
     "flow-bin": "^0.54.1",
     "tap": "^10.7.2"
   }
