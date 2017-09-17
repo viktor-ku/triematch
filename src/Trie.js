@@ -25,6 +25,28 @@ class Trie {
     const node: Node | void = this.table[query]
     return node && node.value
   }
+  /** 
+   Executes a provided function once per each key/value pair
+   @example store.forEach(callback)
+  */
+  forEach (callback: Function): void {
+    if (!callback) {
+      return
+    }
+    const iterableTable = Object.keys(this.table)
+      .reduce((obj, key) => {
+        obj[key] = Object.assign({}, this.table[key].value)
+        return obj
+      }, {})
+
+    const keys: Array<string> = Object.keys(this.table)
+    const size: number = keys.length
+    for (let i = 0; i < size; i++) {
+      const key: string = keys[i]
+      const value: any | null = iterableTable[key]
+      callback(value, key, iterableTable)
+    }
+  }
 
   /**
     Get all values matching this `query`. If `count` is greater than `0` then return that many results (it will increase searching in case you have thousands of elements). Will return all results by default
