@@ -2,7 +2,15 @@
 
 Notable changes only
 
-### 1.1.2
+### 2.0.0 (WIP)
+
+The goal is to make this storage API as similar as possible to the `Map` API
+
+- Add `forEach` method
+- Remove `toArray`
+- Remove `toObject`
+
+### 1.1.2 (current)
 
 - Fix an issue when after removing a node the table was pointing to the empty node
 - Add `node:4` to the travis
