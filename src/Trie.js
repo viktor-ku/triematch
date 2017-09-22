@@ -169,7 +169,7 @@ class Trie {
     }
 
     if (!point) {
-      this.reset()
+      this.clear()
       return
     }
 
@@ -181,7 +181,7 @@ class Trie {
     Reset the state after which the whole store will be empty
     @example store.reset()
   */
-  reset (): void {
+  clear (): void {
     this.rootSocket = {}
     this.table = new Map()
   }

@@ -5,13 +5,13 @@ const t = require('tap')
 const Store = require('../src/Trie')
 const $ = require('./lib/state')
 
-t.test('reset', t => {
+t.test('clear', t => {
   const store = new Store()
   $.feed(store)
 
   t.ok(store.table.size)
 
-  store.reset()
+  store.clear()
 
   t.notOk(store.table.size)
 
