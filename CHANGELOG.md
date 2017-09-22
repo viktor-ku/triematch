@@ -9,6 +9,8 @@ The goal is to make this storage API as similar as possible to the `Map` API
 - Add `forEach` method
 - Remove `toArray`
 - Remove `toObject`
+- Rename `reset` to `clear`
+- Rename `remove` to `delete`
 
 ### 1.1.2 (current)
 

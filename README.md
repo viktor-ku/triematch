@@ -23,7 +23,7 @@ npm install triematch
 
 ## Roadmap
 
--   Add `Array` specific methods like maybe `pop`, `shift`, `forEach`, etc.
+-   Make similar to `Map` API
 -   Performance improvements by hacking stuff
 -   Compare `triematch` with something similar
 
