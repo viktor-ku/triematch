@@ -9,4 +9,5 @@ require('babel-register')
 fs
   .readdirSync(__dirname)
   .filter(name => name !== 'lib' && name !== 'index.js')
-  .map(name => require(path.join(__dirname, name)))
+  .map(name => path.join(__dirname, name))
+  .forEach(name => require(name))

@@ -17,7 +17,11 @@ t.test('forEach', t => {
 
     t.equal(callback.callCount, $.state.size)
 
-    callback.args.forEach(([value, key, table]) => {
+    callback.args.forEach(arg => {
+      const value = arg[0]
+      const key = arg[1]
+      const table = arg[2]
+
       t.ok(store.table.has(key))
       t.deepEqual(store.get(key), table.get(key).value)
     })
