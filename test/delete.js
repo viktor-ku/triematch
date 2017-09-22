@@ -5,12 +5,12 @@ const t = require('tap')
 const Store = require('../src/Trie')
 const $ = require('./lib/state')
 
-t.test('remove', t => {
+t.test('delete', t => {
   t.test('unexisting thing', t => {
     const store = new Store()
     $.feed(store)
 
-    store.remove('Not in here at all')
+    store.delete('Not in here at all')
     t.equal(store.match($.Michael).length, $.state.size)
 
     t.end()
@@ -21,7 +21,7 @@ t.test('remove', t => {
 
     store.set($.MichaelJimenez, $.state.get($.MichaelJimenez))
 
-    store.remove($.MichaelJimenez)
+    store.delete($.MichaelJimenez)
 
     t.deepEqual(store.table, {})
     t.notOk(store.get($.MichaelJimenez))
@@ -38,7 +38,7 @@ t.test('remove', t => {
     store.set($.MichaelJones, $.state.get($.MichaelJones))
     store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
-    store.remove($.MichaelJones)
+    store.delete($.MichaelJones)
 
     t.notOk(store.get($.MichaelJones))
     t.ok(store.get($.MichaelJoneson))
@@ -53,7 +53,7 @@ t.test('remove', t => {
     store.set($.MichaelJones, $.state.get($.MichaelJones))
     store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
-    store.remove($.MichaelJoneson)
+    store.delete($.MichaelJoneson)
 
     t.notOk(store.get($.MichaelJoneson))
     t.ok(store.get($.MichaelJones))
@@ -69,7 +69,7 @@ t.test('remove', t => {
     store.set($.MichaelJones, $.state.get($.MichaelJones))
     store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
-    store.remove($.Michael)
+    store.delete($.Michael)
 
     t.notOk(store.get($.Michael))
     t.ok(store.get($.MichaelJones))
@@ -86,7 +86,7 @@ t.test('remove', t => {
     store.set($.MichaelJones, $.state.get($.MichaelJones))
     store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
-    store.remove($.MichaelJoneson)
+    store.delete($.MichaelJoneson)
 
     t.notOk(store.get($.MichaelJoneson))
     t.ok(store.get($.Michael))
@@ -103,7 +103,7 @@ t.test('remove', t => {
     store.set($.MichaelJones, $.state.get($.MichaelJones))
     store.set($.MichaelJoneson, $.state.get($.MichaelJoneson))
 
-    store.remove($.MichaelJones)
+    store.delete($.MichaelJones)
 
     t.notOk(store.get($.MichaelJones))
     t.ok(store.get($.Michael))

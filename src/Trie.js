@@ -135,7 +135,7 @@ class Trie {
     Remove value by a given key
     @example store.remove('Michael Jacobs')
   */
-  remove (query: string): void {
+  delete (query: string): void {
     const end: Node | void = this.table.get(query)
 
     if (!end) {
