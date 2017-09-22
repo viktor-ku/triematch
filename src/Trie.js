@@ -12,14 +12,39 @@ const getClosestNode = require('./getClosestNode')
 class Trie {
   rootSocket: Object
   table: Map<string, any>
+  size: number
 
   constructor () {
     this.rootSocket = {}
     this.table = new Map()
+    this.size = 0 // TODO
+  }
+
+  entries () {
+    // TODO
+  }
+
+  has () {
+    // TODO
+  }
+
+  keys () {
+    // TODO
+  }
+
+  values () {
+    // TODO
+  }
+
+  [Symbol.iterator] () {
+    return {
+      next: () => ({ done: true })
+    }
   }
 
   /**
-    Get exact one value like e.g. `Map` does
+    Returns the value associated to the key, or undefined if there is none
+
     @example store.get('Michael')
   */
   get (query: string): any {
@@ -28,8 +53,9 @@ class Trie {
   }
 
   /**
-   Executes a provided function once per each key/value pair
-   @example store.forEach((value, key, table) => console.log(key, '=>', value))
+    Calls callbackFn once for each key-value pair present in the Map object, in insertion order. If a thisArg parameter is provided to forEach, it will be used as the this value for each callback
+
+    @example store.forEach((value, key, table) => console.log(key, '=>', value))
   */
   forEach (callback: (value: any, key: string, table: Map<string, any>) => any): void {
     if (!callback) {
@@ -48,6 +74,7 @@ class Trie {
 
   /**
     Get all values matching this `query`. If `count` is greater than `0` then return that many results (it will increase searching in case you have thousands of elements). Will return all results by default
+
     @example store.match('Michael')
     @example store.match('John', 20)
   */
@@ -101,7 +128,8 @@ class Trie {
   }
 
   /**
-    Add value
+    Sets the value for the key in the Trie object. Returns the Trie object
+
     @example store.set('Michael Jackson', { id: 1 })
     @example store.set('Lord Kelvin', 1824)
     @example store.set('William Osler', 'Scientist')
@@ -132,7 +160,8 @@ class Trie {
   }
 
   /**
-    Remove value by a given key
+    Removes any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
+
     @example store.remove('Michael Jacobs')
   */
   delete (query: string): void {
@@ -178,7 +207,7 @@ class Trie {
   }
 
   /**
-    Reset the state after which the whole store will be empty
+    Removes all key/value pairs from the Trie object
     @example store.reset()
   */
   clear (): void {
