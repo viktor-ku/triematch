@@ -13,18 +13,13 @@ t.test('forEach', t => {
 
     const callback = sinon.spy()
 
-    const iterableTable = Object.keys(store.table)
-      .reduce((obj, key) => {
-        obj[key] = store.table[key].value
-        return obj
-      }, {})
+    store.forEach(callback)
 
-    callback.args.forEach((value, key, table) => {
-      const currentValue = table[key][0]
-      const currentKey = table[key][1]
-      const currentTable = table[key][2]
-      t.deepEqual(store.get(currentKey), currentValue, `store has valid ${key}`)
-      t.deepEqual(currentTable, iterableTable, 'callback gets the entire table')
+    t.equal(callback.callCount, $.state.size)
+
+    callback.args.forEach(([value, key, table]) => {
+      t.ok(store.table.has(key))
+      t.deepEqual(store.get(key), table.get(key).value)
     })
 
     t.end()
@@ -35,8 +30,7 @@ t.test('forEach', t => {
     $.feed(store)
 
     function callback (value, key, table) {
-      table[key].id = null
-      delete table[key].name
+      table.clear()
     }
 
     store.forEach(callback)

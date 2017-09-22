@@ -21,9 +21,9 @@ const names: Array<string> = [
   MichaelJacobs
 ]
 
-const state = new Map()
+const state: Map<string, Object> = new Map()
 
-names.forEach((name, i) => state.set(name, {
+names.forEach((name: string, i: number) => state.set(name, {
   id: i + 1,
   name
 }))

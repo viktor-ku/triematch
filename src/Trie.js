@@ -1,8 +1,6 @@
 // @flow
 'use strict'
 
-type UserValue = any
-
 const Node = require('./Node')
 const getClosestNode = require('./getClosestNode')
 
@@ -13,19 +11,19 @@ const getClosestNode = require('./getClosestNode')
 */
 class Trie {
   rootSocket: Object
-  table: Object
+  table: Map<string, any>
 
   constructor () {
     this.rootSocket = {}
-    this.table = {}
+    this.table = new Map()
   }
 
   /**
     Get exact one value like e.g. `Map` does
     @example store.get('Michael')
   */
-  get (query: string): UserValue | void {
-    const node: Node | void = this.table[query]
+  get (query: string): any {
+    const node: Node | void = this.table.get(query)
     return node && node.value
   }
 
@@ -33,23 +31,18 @@ class Trie {
    Executes a provided function once per each key/value pair
    @example store.forEach((value, key, table) => console.log(key, '=>', value))
   */
-  forEach (callback: (value: UserValue, key: string, table: Object) => void): void {
+  forEach (callback: (value: any, key: string, table: Map<string, any>) => any): void {
     if (!callback) {
       return
     }
 
-    const keys: Array<string> = Object.keys(this.table)
+    const table = this.table
 
-    const iterableTable = keys.reduce((obj, key) => {
-      obj[key] = Object.assign({}, this.table[key].value)
-      return obj
-    }, {})
+    for (const pair: [string, Node] of table) {
+      const key = pair[0]
+      const value = pair[1].value
 
-    for (let i = 0, len = keys.length; i < len; i++) {
-      const key: string = keys[i]
-      const value: UserValue | null = iterableTable[key]
-
-      callback(value, key, iterableTable)
+      callback(value, key, new Map(table))
     }
   }
 
@@ -92,9 +85,11 @@ class Trie {
         }
       } else if (socketCount === 0) {
         const next: Node = points.pop()
+
         if (!next) {
           break
         }
+
         node = next
         continue
       }
@@ -113,7 +108,7 @@ class Trie {
     @example store.set('Anton Webern', [])
     @example store.set('Charles Best', function info () {})
   */
-  set (key: string, value: UserValue): void {
+  set (key: string, value: any): void {
     if (!key) {
       return
     }
@@ -133,7 +128,7 @@ class Trie {
     node.name = key
     node.value = value
 
-    this.table[key] = node
+    this.table.set(key, node)
   }
 
   /**
@@ -141,7 +136,7 @@ class Trie {
     @example store.remove('Michael Jacobs')
   */
   remove (query: string): void {
-    const end: Node = this.table[query]
+    const end: Node | void = this.table.get(query)
 
     if (!end) {
       return
@@ -152,7 +147,7 @@ class Trie {
     if (endSockets) {
       delete end.name
       delete end.value
-      delete this.table[query]
+      this.table.delete(query)
       return
     }
 
@@ -179,7 +174,7 @@ class Trie {
     }
 
     delete point.node.socket[point.char]
-    delete this.table[query]
+    this.table.delete(query)
   }
 
   /**
@@ -188,39 +183,7 @@ class Trie {
   */
   reset (): void {
     this.rootSocket = {}
-    this.table = {}
-  }
-
-  /**
-    Return the key - value representation of the state
-    @example store.toObject()
-  */
-  toObject (): Object {
-    const obj = {}
-    const keys = Object.keys(this.table)
-
-    for (let n = 0, len = keys.length; n < len; n++) {
-      const key = keys[n]
-      const value = this.table[key].value
-      obj[key] = value
-    }
-
-    return obj
-  }
-
-  /**
-    Return array with just values
-    @example store.toArray()
-  */
-  toArray (): Array<any> {
-    const arr = []
-    const keys = Object.keys(this.table)
-
-    for (let n = 0, len = keys.length; n < len; n++) {
-      arr.push(this.table[keys[n]].value)
-    }
-
-    return arr
+    this.table = new Map()
   }
 }
 

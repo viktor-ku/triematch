@@ -36,12 +36,6 @@ t.test('match', t => {
     t.equal(a.length, $.state.size)
     t.equal(a.length, store.match('M').length)
 
-    const o = store.toObject()
-    const k = Object.keys(o)
-    $.state.forEach(man => {
-      t.ok(k.some(key => key === man.name))
-    })
-
     t.end()
   })
 

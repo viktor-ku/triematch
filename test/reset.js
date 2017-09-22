@@ -9,11 +9,11 @@ t.test('reset', t => {
   const store = new Store()
   $.feed(store)
 
-  t.equal(store.toArray().length, $.state.size, 'before reset')
+  t.ok(store.table.size)
 
   store.reset()
 
-  t.equal(store.toArray().length, 0, 'after reset')
+  t.notOk(store.table.size)
 
   t.end()
 })
