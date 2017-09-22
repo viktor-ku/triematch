@@ -1,6 +1,8 @@
 // @flow
 'use strict'
 
+type UserValue = any
+
 const Node = require('./Node')
 
 /**
@@ -21,29 +23,31 @@ class Trie {
     Get exact one value like e.g. `Map` does
     @example store.get('Michael')
   */
-  get (query: string): any | null {
+  get (query: string): UserValue | void {
     const node: Node | void = this.table[query]
     return node && node.value
   }
-  /** 
+
+  /**
    Executes a provided function once per each key/value pair
-   @example store.forEach(callback)
+   @example store.forEach((value, key, table) => console.log(key, '=>', value))
   */
-  forEach (callback: Function): void {
+  forEach (callback: (value: UserValue, key: string, table: Object) => void): void {
     if (!callback) {
       return
     }
-    const iterableTable = Object.keys(this.table)
-      .reduce((obj, key) => {
-        obj[key] = Object.assign({}, this.table[key].value)
-        return obj
-      }, {})
 
     const keys: Array<string> = Object.keys(this.table)
-    const size: number = keys.length
-    for (let i = 0; i < size; i++) {
+
+    const iterableTable = keys.reduce((obj, key) => {
+      obj[key] = Object.assign({}, this.table[key].value)
+      return obj
+    }, {})
+
+    for (let i = 0, len = keys.length; i < len; i++) {
       const key: string = keys[i]
-      const value: any | null = iterableTable[key]
+      const value: UserValue | null = iterableTable[key]
+
       callback(value, key, iterableTable)
     }
   }
@@ -108,7 +112,7 @@ class Trie {
     @example store.set('Anton Webern', [])
     @example store.set('Charles Best', function info () {})
   */
-  set (key: string, value: any): void {
+  set (key: string, value: UserValue): void {
     if (!key) {
       return
     }
