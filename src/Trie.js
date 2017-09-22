@@ -4,6 +4,7 @@
 type UserValue = any
 
 const Node = require('./Node')
+const getClosestNode = require('./getClosestNode')
 
 /**
   Trie class
@@ -64,7 +65,7 @@ class Trie {
 
     const points: Array<Node> = []
     const result: Array<any> = []
-    const closestNode: Node | null = this._getClosestNode(query)
+    const closestNode: Node | null = getClosestNode(this.rootSocket, query)
 
     if (!closestNode) {
       return []
@@ -220,22 +221,6 @@ class Trie {
     }
 
     return arr
-  }
-
-  _getClosestNode (query: string): Node | null {
-    let node: Node = new Node({ socket: this.rootSocket })
-
-    for (let n = 0, len = query.length; n < len; n++) {
-      const char = query[n]
-
-      if (!node.socket[char]) {
-        return null
-      }
-
-      node = node.socket[char]
-    }
-
-    return node
   }
 }
 
