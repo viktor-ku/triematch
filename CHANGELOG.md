@@ -7,10 +7,16 @@ Notable changes only
 The goal is to make this storage API as similar as possible to the `Map` API
 
 - Add `forEach` method
-- Remove `toArray`
-- Remove `toObject`
+- Add `size` prop
+- Add `has` method
+- Add `keys` method
+- Add `values` method
+- Add `entries` method
+- Constructor now gets `iterable` as an initial value
 - Rename `reset` to `clear`
 - Rename `remove` to `delete`
+- Remove `toArray`
+- Remove `toObject`
 
 ### 1.1.2 (current)
 
