@@ -8,12 +8,11 @@ const $ = require('./lib/state')
 t.test('clear', t => {
   const store = new Store()
   $.feed(store)
-
-  t.ok(store.cache.size)
-
+  t.ok(store.size)
+  store.set($.MichaelJimenez, $.state.get($.MichaelJimenez))
+  store.delete($.MichaelJimenez)
   store.clear()
-
-  t.notOk(store.cache.size)
+  t.notOk(store.size)
 
   t.end()
 })
