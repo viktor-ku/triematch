@@ -85,7 +85,7 @@ class Trie {
 
     const points: Array<Node> = []
     const result: Array<any> = []
-    const closestNode: Node | null = getClosestNode(this.rootSocket, query)
+    const closestNode: Node | void = getClosestNode(this.rootSocket, query)
 
     if (!closestNode) {
       return []
@@ -102,7 +102,7 @@ class Trie {
       const socketCount: number = sockets.length
       const char: string = sockets[0]
 
-      if (node.name) {
+      if (node.key) {
         result.push(node.value)
       }
 
@@ -153,7 +153,7 @@ class Trie {
       node = node.socket[char]
     }
 
-    node.name = key
+    node.key = key
     node.value = value
 
     this.cache.set(key, node)
@@ -174,7 +174,7 @@ class Trie {
     const endSockets: number = Object.keys(end.socket).length
 
     if (endSockets) {
-      delete end.name
+      delete end.key
       delete end.value
       this.cache.delete(query)
       return
@@ -190,7 +190,7 @@ class Trie {
         return
       }
 
-      if (node.name || Object.keys(node.socket).length >= 2) {
+      if (node.key || Object.keys(node.socket).length >= 2) {
         point = { node, char }
       }
 

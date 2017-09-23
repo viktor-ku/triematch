@@ -4,7 +4,7 @@
 class Node {
   socket: Object
   value: Object
-  name: string
+  key: string
 
   constructor (args?: Object) {
     args = args || {}
