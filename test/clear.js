@@ -9,11 +9,11 @@ t.test('clear', t => {
   const store = new Store()
   $.feed(store)
 
-  t.ok(store.table.size)
+  t.ok(store.cache.size)
 
   store.clear()
 
-  t.notOk(store.table.size)
+  t.notOk(store.cache.size)
 
   t.end()
 })

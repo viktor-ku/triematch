@@ -23,10 +23,9 @@ t.test('delete', t => {
 
     store.delete($.MichaelJimenez)
 
-    t.deepEqual(store.table, {})
+    t.equal(store.cache.size, 0)
     t.notOk(store.get($.MichaelJimenez))
     t.equal(store.match($.MichaelJimenez).length, 0)
-    t.deepEqual(store.table, {})
     t.deepEqual(store.rootSocket, {})
 
     t.end()

@@ -11,12 +11,12 @@ const getClosestNode = require('./getClosestNode')
 */
 class Trie {
   rootSocket: Object
-  table: Map<string, any>
+  cache: Map<string, any>
   size: number
 
   constructor () {
     this.rootSocket = {}
-    this.table = new Map()
+    this.cache = new Map()
     this.size = 0 // TODO
   }
 
@@ -48,7 +48,7 @@ class Trie {
     @example store.get('Michael')
   */
   get (query: string): any {
-    const node: Node | void = this.table.get(query)
+    const node: Node | void = this.cache.get(query)
     return node && node.value
   }
 
@@ -62,13 +62,13 @@ class Trie {
       return
     }
 
-    const table = this.table
+    const cache = this.cache
 
-    for (const pair: [string, Node] of table) {
+    for (const pair: [string, Node] of cache) {
       const key = pair[0]
       const value = pair[1].value
 
-      callback(value, key, new Map(table))
+      callback(value, key, new Map(cache))
     }
   }
 
@@ -156,7 +156,7 @@ class Trie {
     node.name = key
     node.value = value
 
-    this.table.set(key, node)
+    this.cache.set(key, node)
   }
 
   /**
@@ -165,7 +165,7 @@ class Trie {
     @example store.remove('Michael Jacobs')
   */
   delete (query: string): void {
-    const end: Node | void = this.table.get(query)
+    const end: Node | void = this.cache.get(query)
 
     if (!end) {
       return
@@ -176,7 +176,7 @@ class Trie {
     if (endSockets) {
       delete end.name
       delete end.value
-      this.table.delete(query)
+      this.cache.delete(query)
       return
     }
 
@@ -203,7 +203,7 @@ class Trie {
     }
 
     delete point.node.socket[point.char]
-    this.table.delete(query)
+    this.cache.delete(query)
   }
 
   /**
@@ -212,7 +212,7 @@ class Trie {
   */
   clear (): void {
     this.rootSocket = {}
-    this.table = new Map()
+    this.cache = new Map()
   }
 }
 

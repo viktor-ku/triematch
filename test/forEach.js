@@ -22,8 +22,9 @@ t.test('forEach', t => {
       const key = arg[1]
       const table = arg[2]
 
-      t.ok(store.table.has(key))
+      t.ok(store.cache.has(key))
       t.deepEqual(store.get(key), table.get(key).value)
+      t.deepEqual(store.get(key), value)
     })
 
     t.end()
