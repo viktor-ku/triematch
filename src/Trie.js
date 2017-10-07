@@ -24,8 +24,22 @@ class Trie {
     // TODO
   }
 
-  has () {
-    // TODO
+  /**
+    Returns true or false depending on whether class consist such key or not
+
+    @example store.has('Michael')
+  */
+  has (key: string): boolean {
+    if (!key) {
+      return false
+    }
+
+    const node: Node | void = this.cache.get(key)
+
+    if (!node) {
+      return false
+    }
+    return true
   }
 
   keys () {
