@@ -17,7 +17,7 @@ class Trie {
   constructor () {
     this.rootSocket = {}
     this.cache = new Map()
-    this.size = 0 // TODO
+    this.size = 0
   }
 
   entries () {
@@ -171,6 +171,7 @@ class Trie {
     node.value = value
 
     this.cache.set(key, node)
+    this.size++
   }
 
   /**
@@ -218,6 +219,7 @@ class Trie {
 
     delete point.node.socket[point.char]
     this.cache.delete(query)
+    this.size--
   }
 
   /**
@@ -227,6 +229,7 @@ class Trie {
   clear (): void {
     this.rootSocket = {}
     this.cache = new Map()
+    this.size = 0
   }
 }
 
