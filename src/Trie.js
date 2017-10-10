@@ -41,7 +41,11 @@ class Trie {
     }
     return true
   }
+  /**
+    Returns a new Iterator object that contains the keys for each element of Trie
 
+    @example store.keys()
+  */
   keys (): Iterator<string> {
     const cache = this.cache
     const keys: Array<string> = []
