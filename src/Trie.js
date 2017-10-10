@@ -41,6 +41,7 @@ class Trie {
     }
     return true
   }
+
   /**
     Returns a new Iterator object that contains the keys for each element of Trie
 
@@ -61,8 +62,24 @@ class Trie {
     }
   }
 
-  values () {
-    // TODO
+  /**
+  returns a new Iterator object that contains the values for each element
+
+  @example store.values()
+  */
+  values (): Iterator<any> {
+    const cache = this.cache
+    const values: Array<string> = []
+    var index = 0
+
+    for (const pair: [string, Node] of cache) {
+      const value = pair[1].value
+      values.push(value)
+    }
+
+    return {
+      next: () => (index < values.length ? {value: values[index++], done: false} : {done: true})
+    }
   }
 
   [Symbol.iterator] () {
