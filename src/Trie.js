@@ -17,23 +17,69 @@ class Trie {
   constructor () {
     this.rootSocket = {}
     this.cache = new Map()
-    this.size = 0 // TODO
+    this.size = 0
   }
 
   entries () {
     // TODO
   }
 
-  has () {
-    // TODO
+  /**
+    Returns true or false depending on whether class consist such key or not
+
+    @example store.has('Michael')
+  */
+  has (key: string): boolean {
+    if (!key) {
+      return false
+    }
+
+    const node: Node | void = this.cache.get(key)
+
+    if (!node) {
+      return false
+    }
+    return true
   }
 
-  keys () {
-    // TODO
+  /**
+    Returns a new Iterator object that contains the keys for each element of Trie
+
+    @example store.keys()
+  */
+  keys (): Iterator<string> {
+    const cache = this.cache
+    const keys: Array<string> = []
+    var index = 0
+
+    for (const pair: [string, Node] of cache) {
+      const key = pair[0]
+      keys.push(key)
+    }
+
+    return {
+      next: () => (index < keys.length ? {value: keys[index++], done: false} : {done: true})
+    }
   }
 
-  values () {
-    // TODO
+  /**
+  returns a new Iterator object that contains the values for each element
+
+  @example store.values()
+  */
+  values (): Iterator<any> {
+    const cache = this.cache
+    const values: Array<string> = []
+    var index = 0
+
+    for (const pair: [string, Node] of cache) {
+      const value = pair[1].value
+      values.push(value)
+    }
+
+    return {
+      next: () => (index < values.length ? {value: values[index++], done: false} : {done: true})
+    }
   }
 
   [Symbol.iterator] () {
@@ -157,12 +203,13 @@ class Trie {
     node.value = value
 
     this.cache.set(key, node)
+    this.size++
   }
 
   /**
     Removes any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
 
-    @example store.remove('Michael Jacobs')
+    @example store.delete('Michael Jacobs')
   */
   delete (query: string): void {
     const end: Node | void = this.cache.get(query)
@@ -204,6 +251,7 @@ class Trie {
 
     delete point.node.socket[point.char]
     this.cache.delete(query)
+    this.size--
   }
 
   /**
@@ -213,6 +261,7 @@ class Trie {
   clear (): void {
     this.rootSocket = {}
     this.cache = new Map()
+    this.size = 0
   }
 }
 
