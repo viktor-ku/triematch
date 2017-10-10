@@ -42,8 +42,19 @@ class Trie {
     return true
   }
 
-  keys () {
-    // TODO
+  keys (): Iterator<string> {
+    const cache = this.cache
+    const keys: Array<string> = []
+    var index = 0
+
+    for (const pair: [string, Node] of cache) {
+      const key = pair[0]
+      keys.push(key)
+    }
+
+    return {
+      next: () => (index < keys.length ? {value: keys[index++], done: false} : {done: true})
+    }
   }
 
   values () {
@@ -177,7 +188,7 @@ class Trie {
   /**
     Removes any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
 
-    @example store.remove('Michael Jacobs')
+    @example store.delete('Michael Jacobs')
   */
   delete (query: string): void {
     const end: Node | void = this.cache.get(query)
