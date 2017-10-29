@@ -58,15 +58,14 @@ class Trie extends Map {
     if (!callback) {
       return
     }
-
-    const cache = this
-
-    for (const pair: [string, Node] of cache) {
-      const key = pair[0]
-      const value = pair[1].value
-
-      callback(value, key, new Map(cache))
-    }
+    super.forEach(callback)
+    // for (const pair: [string, Node] of cache) {
+    //   const key = pair[0]
+    //   console.log(pair)
+    //   const value = pair[1].value
+    //   // console.log(key)
+    //   callback(value, key, new Map(cache))
+    // }
   }
 
   /**
@@ -157,9 +156,9 @@ class Trie extends Map {
   }
 
   /**
-    Removes any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
+    Delete any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
 
-    @example store.remove('Michael Jacobs')
+    @example store.delete('Michael Jacobs')
   */
   delete (query: string): void {
     const end: Node | void = super.get(query)
@@ -173,13 +172,13 @@ class Trie extends Map {
     if (endSockets) {
       delete end.key
       delete end.value
-      this.delete(query)
+      super.delete(query)
       return
     }
 
     let node = new Node({ socket: this.rootSocket })
-    let point: Object | void
 
+    let point: Object | void
     for (let n = 0, len = query.length; n < len; n++) {
       const char: string = query[n]
 
@@ -195,12 +194,12 @@ class Trie extends Map {
     }
 
     if (!point) {
-      super.clear()
+      this.clear()
       return
     }
 
     delete point.node.socket[point.char]
-    this.delete(query)
+    super.delete(query)
   }
 
   /**
