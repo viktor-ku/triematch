@@ -18,12 +18,9 @@ t.test('delete', t => {
 
   t.test('alone', t => {
     const store = new Store()
-
     store.set($.MichaelJimenez, $.state.get($.MichaelJimenez))
-
     store.delete($.MichaelJimenez)
-
-    t.equal(store.cache.size, 0)
+    t.equal(store.size, 0)
     t.notOk(store.get($.MichaelJimenez))
     t.equal(store.match($.MichaelJimenez).length, 0)
     t.deepEqual(store.rootSocket, {})

@@ -9,32 +9,29 @@ const getClosestNode = require('./getClosestNode')
   @name Trie
   @example const store = new Trie()
 */
-class Trie {
+class Trie extends Map {
   rootSocket: Object
-  cache: Map<string, any>
-  size: number
 
   constructor () {
+    super()
     this.rootSocket = {}
-    this.cache = new Map()
-    this.size = 0 // TODO
   }
 
-  entries () {
-    // TODO
+  // entries () {
+  //   // TODO
+  // }
+
+  has (key: string): boolean {
+    return super.has(key)
   }
 
-  has () {
-    // TODO
-  }
+  // keys () {
+  //   // TODO
+  // }
 
-  keys () {
-    // TODO
-  }
-
-  values () {
-    // TODO
-  }
+  // values () {
+  //   // TODO
+  // }
 
   [Symbol.iterator] () {
     return {
@@ -48,7 +45,7 @@ class Trie {
     @example store.get('Michael')
   */
   get (query: string): any {
-    const node: Node | void = this.cache.get(query)
+    const node: Node | void = super.get(query)
     return node && node.value
   }
 
@@ -61,15 +58,14 @@ class Trie {
     if (!callback) {
       return
     }
-
-    const cache = this.cache
-
-    for (const pair: [string, Node] of cache) {
-      const key = pair[0]
-      const value = pair[1].value
-
-      callback(value, key, new Map(cache))
-    }
+    super.forEach(callback)
+    // for (const pair: [string, Node] of cache) {
+    //   const key = pair[0]
+    //   console.log(pair)
+    //   const value = pair[1].value
+    //   // console.log(key)
+    //   callback(value, key, new Map(cache))
+    // }
   }
 
   /**
@@ -136,7 +132,7 @@ class Trie {
     @example store.set('Anton Webern', [])
     @example store.set('Charles Best', function info () {})
   */
-  set (key: string, value: any): void {
+  set (key: string, value: any): Map {
     if (!key) {
       return
     }
@@ -156,16 +152,16 @@ class Trie {
     node.key = key
     node.value = value
 
-    this.cache.set(key, node)
+    super.set(key, node)
   }
 
   /**
-    Removes any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
+    Delete any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
 
-    @example store.remove('Michael Jacobs')
+    @example store.delete('Michael Jacobs')
   */
   delete (query: string): void {
-    const end: Node | void = this.cache.get(query)
+    const end: Node | void = super.get(query)
 
     if (!end) {
       return
@@ -176,13 +172,13 @@ class Trie {
     if (endSockets) {
       delete end.key
       delete end.value
-      this.cache.delete(query)
+      super.delete(query)
       return
     }
 
     let node = new Node({ socket: this.rootSocket })
-    let point: Object | void
 
+    let point: Object | void
     for (let n = 0, len = query.length; n < len; n++) {
       const char: string = query[n]
 
@@ -203,7 +199,7 @@ class Trie {
     }
 
     delete point.node.socket[point.char]
-    this.cache.delete(query)
+    super.delete(query)
   }
 
   /**
@@ -212,7 +208,7 @@ class Trie {
   */
   clear (): void {
     this.rootSocket = {}
-    this.cache = new Map()
+    super.clear()
   }
 }
 

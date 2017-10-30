@@ -3,6 +3,7 @@ coverage/
 node_modules/
 docs/
 
+.idea/
 .npm
 *.tgz
 *.log
