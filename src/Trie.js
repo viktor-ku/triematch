@@ -17,22 +17,6 @@ class Trie extends Map {
     this.rootSocket = {}
   }
 
-  // entries () {
-  //   // TODO
-  // }
-
-  has (key: string): boolean {
-    return super.has(key)
-  }
-
-  // keys () {
-  //   // TODO
-  // }
-
-  // values () {
-  //   // TODO
-  // }
-
   [Symbol.iterator] () {
     return {
       next: () => ({ done: true })
@@ -47,25 +31,6 @@ class Trie extends Map {
   get (query: string): any {
     const node: Node | void = super.get(query)
     return node && node.value
-  }
-
-  /**
-    Calls callbackFn once for each key-value pair present in the Map object, in insertion order. If a thisArg parameter is provided to forEach, it will be used as the this value for each callback
-
-    @example store.forEach((value, key, table) => console.log(key, '=>', value))
-  */
-  forEach (callback: (value: any, key: string, table: Map<string, any>) => any): void {
-    if (!callback) {
-      return
-    }
-    super.forEach(callback)
-    // for (const pair: [string, Node] of cache) {
-    //   const key = pair[0]
-    //   console.log(pair)
-    //   const value = pair[1].value
-    //   // console.log(key)
-    //   callback(value, key, new Map(cache))
-    // }
   }
 
   /**
