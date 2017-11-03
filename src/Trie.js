@@ -7,14 +7,20 @@ const getClosestNode = require('./getClosestNode')
 /**
   Trie class
   @name Trie
-  @example const store = new Trie()
+  @example const store = new Trie(...args)
 */
 class Trie extends Map {
   rootSocket: Object
 
-  constructor () {
-    super()
+  constructor (args?: any) {
+    super(args)
+    const self = this
     this.rootSocket = {}
+    if (args) {
+      args.forEach((value, key, table) => {
+        self.set(key, value)
+      })
+    }
   }
 
   [Symbol.iterator] () {

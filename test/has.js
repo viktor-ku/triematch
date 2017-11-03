@@ -10,11 +10,11 @@ t.test('has', t => {
   const name = 'Michael Jackson'
 
   $.feed(store)
-  t.equal(store.has(name), true)
+  t.ok(store.has(name))
 
   store.delete(name)
 
-  t.equal(store.has(name), false)
-  t.equal(store.has(), false)
+  t.notOk(store.has(name))
+  t.notOk(store.has())
   t.end()
 })
