@@ -15,10 +15,9 @@ t.test('set', t => {
     t.end()
   })
 
-  t.test('Return nothing', t => {
+  t.test('Return Map', t => {
     const store = new Store()
-    t.notOk(store.set($.MichaelJackson, 1))
-
+    t.type(store.set($.MichaelJackson, 1), 'Map')
     t.end()
   })
   t.end()

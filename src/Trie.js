@@ -89,7 +89,7 @@ class Trie extends Map {
   }
 
   /**
-    Sets the value for the key in the Trie object. 
+    Sets the value for the key in the Trie object. Return Map object
 
     @example store.set('Michael Jackson', { id: 1 })
     @example store.set('Lord Kelvin', 1824)
@@ -97,7 +97,7 @@ class Trie extends Map {
     @example store.set('Anton Webern', [])
     @example store.set('Charles Best', function info () {})
   */
-  set (key: string, value: any): void {
+  set (key: string, value: any): Map {
     if (!key) {
       return
     }
@@ -117,7 +117,7 @@ class Trie extends Map {
     node.key = key
     node.value = value
 
-    super.set(key, node)
+    return super.set(key, node)
   }
 
   /**
