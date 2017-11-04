@@ -7,7 +7,7 @@ const getClosestNode = require('./getClosestNode')
 /**
   Trie class
   @name Trie
-  @example const store = new Trie(...args)
+  @example const store = new Trie(new Map())
 */
 class Trie extends Map {
   rootSocket: Object
@@ -17,15 +17,9 @@ class Trie extends Map {
     const self = this
     this.rootSocket = {}
     if (args) {
-      args.forEach((value, key, table) => {
+      args.forEach((value, key) => {
         self.set(key, value)
       })
-    }
-  }
-
-  [Symbol.iterator] () {
-    return {
-      next: () => ({ done: true })
     }
   }
 
@@ -95,7 +89,7 @@ class Trie extends Map {
   }
 
   /**
-    Sets the value for the key in the Trie object. Returns the Trie object
+    Sets the value for the key in the Trie object. 
 
     @example store.set('Michael Jackson', { id: 1 })
     @example store.set('Lord Kelvin', 1824)
@@ -103,7 +97,7 @@ class Trie extends Map {
     @example store.set('Anton Webern', [])
     @example store.set('Charles Best', function info () {})
   */
-  set (key: string, value: any): Map {
+  set (key: string, value: any): void {
     if (!key) {
       return
     }
@@ -127,15 +121,15 @@ class Trie extends Map {
   }
 
   /**
-    Delete any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
+    Returns true if an element in the Map object existed and has been removed, or false if the element does not exist.
 
     @example store.delete('Michael Jacobs')
   */
-  delete (query: string): void {
+  delete (query: string): boolean {
     const end: Node | void = super.get(query)
 
     if (!end) {
-      return
+      return false
     }
 
     const endSockets: number = Object.keys(end.socket).length
@@ -144,7 +138,7 @@ class Trie extends Map {
       delete end.key
       delete end.value
       super.delete(query)
-      return
+      return true
     }
 
     let node = new Node({ socket: this.rootSocket })
@@ -154,7 +148,7 @@ class Trie extends Map {
       const char: string = query[n]
 
       if (!node.socket[char]) {
-        return
+        return true
       }
 
       if (node.key || Object.keys(node.socket).length >= 2) {
@@ -166,16 +160,17 @@ class Trie extends Map {
 
     if (!point) {
       this.clear()
-      return
+      return true
     }
 
     delete point.node.socket[point.char]
     super.delete(query)
+    return true
   }
 
   /**
     Removes all key/value pairs from the Trie object
-    @example store.reset()
+    @example store.clear()
   */
   clear (): void {
     this.rootSocket = {}

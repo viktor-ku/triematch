@@ -15,5 +15,11 @@ t.test('set', t => {
     t.end()
   })
 
+  t.test('Return nothing', t => {
+    const store = new Store()
+    t.notOk(store.set($.MichaelJackson, 1))
+
+    t.end()
+  })
   t.end()
 })

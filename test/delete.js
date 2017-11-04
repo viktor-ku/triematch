@@ -11,6 +11,7 @@ t.test('delete', t => {
     $.feed(store)
 
     store.delete('Not in here at all')
+    t.notOk(store.delete('unexisting thing'))
     t.equal(store.match($.Michael).length, $.state.size)
 
     t.end()
