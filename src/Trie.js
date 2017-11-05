@@ -7,38 +7,19 @@ const getClosestNode = require('./getClosestNode')
 /**
   Trie class
   @name Trie
-  @example const store = new Trie()
+  @example const store = new Trie(new Map())
 */
-class Trie {
+class Trie extends Map {
   rootSocket: Object
-  cache: Map<string, any>
-  size: number
 
-  constructor () {
+  constructor (args?: any) {
+    super(args)
+    const self = this
     this.rootSocket = {}
-    this.cache = new Map()
-    this.size = 0 // TODO
-  }
-
-  entries () {
-    // TODO
-  }
-
-  has () {
-    // TODO
-  }
-
-  keys () {
-    // TODO
-  }
-
-  values () {
-    // TODO
-  }
-
-  [Symbol.iterator] () {
-    return {
-      next: () => ({ done: true })
+    if (args) {
+      args.forEach((value, key) => {
+        self.set(key, value)
+      })
     }
   }
 
@@ -48,28 +29,8 @@ class Trie {
     @example store.get('Michael')
   */
   get (query: string): any {
-    const node: Node | void = this.cache.get(query)
+    const node: Node | void = super.get(query)
     return node && node.value
-  }
-
-  /**
-    Calls callbackFn once for each key-value pair present in the Map object, in insertion order. If a thisArg parameter is provided to forEach, it will be used as the this value for each callback
-
-    @example store.forEach((value, key, table) => console.log(key, '=>', value))
-  */
-  forEach (callback: (value: any, key: string, table: Map<string, any>) => any): void {
-    if (!callback) {
-      return
-    }
-
-    const cache = this.cache
-
-    for (const pair: [string, Node] of cache) {
-      const key = pair[0]
-      const value = pair[1].value
-
-      callback(value, key, new Map(cache))
-    }
   }
 
   /**
@@ -128,7 +89,7 @@ class Trie {
   }
 
   /**
-    Sets the value for the key in the Trie object. Returns the Trie object
+    Sets the value for the key in the Trie object. Return Map object
 
     @example store.set('Michael Jackson', { id: 1 })
     @example store.set('Lord Kelvin', 1824)
@@ -136,7 +97,7 @@ class Trie {
     @example store.set('Anton Webern', [])
     @example store.set('Charles Best', function info () {})
   */
-  set (key: string, value: any): void {
+  set (key: string, value: any): Map {
     if (!key) {
       return
     }
@@ -156,19 +117,19 @@ class Trie {
     node.key = key
     node.value = value
 
-    this.cache.set(key, node)
+    return super.set(key, node)
   }
 
   /**
-    Removes any value associated to the key and returns the value that has(key) would have previously returned. has(key) will return false afterwards
+    Returns true if an element in the Map object existed and has been removed, or false if the element does not exist.
 
-    @example store.remove('Michael Jacobs')
+    @example store.delete('Michael Jacobs')
   */
-  delete (query: string): void {
-    const end: Node | void = this.cache.get(query)
+  delete (query: string): boolean {
+    const end: Node | void = super.get(query)
 
     if (!end) {
-      return
+      return false
     }
 
     const endSockets: number = Object.keys(end.socket).length
@@ -176,18 +137,18 @@ class Trie {
     if (endSockets) {
       delete end.key
       delete end.value
-      this.cache.delete(query)
-      return
+      super.delete(query)
+      return true
     }
 
     let node = new Node({ socket: this.rootSocket })
-    let point: Object | void
 
+    let point: Object | void
     for (let n = 0, len = query.length; n < len; n++) {
       const char: string = query[n]
 
       if (!node.socket[char]) {
-        return
+        return true
       }
 
       if (node.key || Object.keys(node.socket).length >= 2) {
@@ -199,20 +160,21 @@ class Trie {
 
     if (!point) {
       this.clear()
-      return
+      return true
     }
 
     delete point.node.socket[point.char]
-    this.cache.delete(query)
+    super.delete(query)
+    return true
   }
 
   /**
     Removes all key/value pairs from the Trie object
-    @example store.reset()
+    @example store.clear()
   */
   clear (): void {
     this.rootSocket = {}
-    this.cache = new Map()
+    super.clear()
   }
 }
 

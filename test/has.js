@@ -5,14 +5,16 @@ const t = require('tap')
 const Store = require('../src/Trie')
 const $ = require('./lib/state')
 
-t.test('clear', t => {
+t.test('has', t => {
   const store = new Store()
-  $.feed(store)
-  t.ok(store.size)
-  store.set($.MichaelJimenez, $.state.get($.MichaelJimenez))
-  store.delete($.MichaelJimenez)
-  store.clear()
-  t.notOk(store.size)
+  const name = 'Michael Jackson'
 
+  $.feed(store)
+  t.ok(store.has(name))
+
+  store.delete(name)
+
+  t.notOk(store.has(name))
+  t.notOk(store.has())
   t.end()
 })
