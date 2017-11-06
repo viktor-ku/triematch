@@ -13,7 +13,6 @@
     "docs:serve": "documentation serve -w src/",
     "docs:build": "documentation build src/Trie.js -f html -o .",
     "clean": "rm -rf dist .nyc_output coverage *.tgz docs",
-    "version": "npm run clean && npm run docs:build && git add docs",
     "prepack": "npm run build"
   },
   "repository": {
