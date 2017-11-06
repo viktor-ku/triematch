@@ -4,9 +4,12 @@ Notable changes only
 
 ### 2.0.0
 
-Extend API from `Map` iterable object.
+It's basically a `Map` with `match` additional method now
 
-There is only one additional method which is `match` now
+- Rewrite lib (extend API from `Map`)
+- Add node 7, 8 and 9 to travis
+- Update devDeps
+- Update tests
 
 ### 1.1.2 (current)
 
