@@ -16,16 +16,14 @@ npm install triematch
 ## Features
 
 -   Very fast `get` and `match` (aka matching) functions
--   Straightforward `API`
+-   Straightforward `API` based on `Map`
 -   No dependencies
 -   Very tiny
 -   Browser compatible (via e.g. `webpack`)
 
 ## Roadmap
 
--   Make similar to `Map` API
 -   Performance improvements by hacking stuff
--   Compare `triematch` with something similar
 
 ## Changelog
 
@@ -33,7 +31,7 @@ Checkout [changelog](CHANGELOG.md)
 
 ## How it works
 
-I call it `Store` because it is essentially a store like `Map` or `Set` but its algorithm is different. Basically it stores each char in a separate node that has reference to the next node with char and so on and so forth. In addition to that it has table with keys pointing to the nodes with values so something like `get` function happens to perform as fast as getting property of the plain `Object`.
+I call it `Store` because it is essentially a store like `Map` but its algorithm is different. Basically it stores each char in a separate node that has reference to the next node with char and so on and so forth. In addition to that it has table with keys pointing to the nodes with values so something like `get` function happens to perform as fast as getting property of the plain `Object`.
 
 ## Get started
 
@@ -72,7 +70,6 @@ assert(store.match('Michael').length === 5)
 assert(store.match('Michael Jones').length === 2) // Jones and Joneson
 
 // As a result there will be at least empty array anyway
-assert(Array.isArray(store.match(null)))
 assert(store.match('foo').length === 0)
 ```
 
