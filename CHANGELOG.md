@@ -2,21 +2,11 @@
 
 Notable changes only
 
-### 2.0.0 (WIP)
+### 2.0.0
 
-The goal is to make this storage API as similar as possible to the `Map` API
+Extend API from `Map` iterable object.
 
-- Add `forEach` method
-- Add `size` prop
-- Add `has` method
-- Add `keys` method
-- Add `values` method
-- Add `entries` method
-- Constructor now gets `iterable` as an initial value
-- Rename `reset` to `clear`
-- Rename `remove` to `delete`
-- Remove `toArray`
-- Remove `toObject`
+There is only one additional method which is `match` now
 
 ### 1.1.2 (current)
 

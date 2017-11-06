@@ -2,7 +2,10 @@
   "name": "triematch",
   "version": "1.1.2",
   "description": "Fast Trie structure implementation with matching feature",
-  "main": "index.js",
+  "main": "dist/Trie.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "clear && tap -R dot test/index.js",
     "cov": "npm t -- --cov",
@@ -21,7 +24,10 @@
     "trie",
     "fast",
     "autocomplete",
-    "matching"
+    "matching",
+    "map",
+    "search",
+    "tree"
   ],
   "author": "Viktor Kuroljov",
   "license": "MIT",
