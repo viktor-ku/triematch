@@ -14,12 +14,12 @@ class Trie extends Map {
 
   constructor (args?: any) {
     super(args)
-    const self = this
     this.rootSocket = {}
-    if (args) {
-      args.forEach((value, key) => {
-        self.set(key, value)
-      })
+
+    if (Array.isArray(args)) {
+      for (const [key, value] of args) {
+        this.set(key, value)
+      }
     }
   }
 

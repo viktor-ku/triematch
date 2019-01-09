@@ -9,6 +9,20 @@ t.test('set', t => {
   t.test('one value', t => {
     const store = new Store()
     store.set($.MichaelJackson, 1)
+
+    t.equal(store.size, 1)
+    t.equal(store.get($.MichaelJackson), 1)
+    t.equal(store.match($.Michael).length, 1)
+
+    t.end()
+  })
+
+  t.test('add values with constructor', t => {
+    const store = new Store([
+      [$.MichaelJackson, 1]
+    ])
+
+    t.equal(store.size, 1)
     t.equal(store.get($.MichaelJackson), 1)
     t.equal(store.match($.Michael).length, 1)
 
@@ -18,6 +32,7 @@ t.test('set', t => {
   t.test('Return Map', t => {
     const store = new Store()
     t.type(store.set($.MichaelJackson, 1), 'Map')
+
     t.end()
   })
   t.end()
