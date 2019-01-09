@@ -1,6 +1,6 @@
 {
   "name": "triematch",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Fast Trie structure implementation with matching feature",
   "main": "dist/Trie.js",
   "files": [
