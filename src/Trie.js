@@ -13,7 +13,7 @@ class Trie extends Map {
   rootSocket: Object
 
   constructor (args?: any) {
-    super(args)
+    super()
     this.rootSocket = {}
 
     if (Array.isArray(args)) {
