@@ -2,6 +2,11 @@
 
 Notable changes only
 
+### 2.0.2
+
+- Write an actual key-value pair to the store in `new`
+- Avoid filling in the internal store twice on `new`
+
 ### 2.0.0
 
 It's basically a `Map` with `match` additional method now
@@ -11,7 +16,7 @@ It's basically a `Map` with `match` additional method now
 - Update devDeps
 - Update tests
 
-### 1.1.2 (current)
+### 1.1.2
 
 - Fix an issue when after removing a node the table was pointing to the empty node
 - Add `node:4` to the travis
