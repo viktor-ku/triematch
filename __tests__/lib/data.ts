@@ -1,6 +1,3 @@
-// @flow
-'use strict'
-
 const Michael = 'Michael'
 const MichaelJoseph = 'Michael Joseph'
 const MichaelJones = 'Michael Jones'
@@ -10,7 +7,7 @@ const MichaelJensen = 'Michael Jensen'
 const MichaelJackson = 'Michael Jackson'
 const MichaelJacobs = 'Michael Jacobs'
 
-const names: Array<string> = [
+const names = [
   Michael,
   MichaelJoseph,
   MichaelJones,
@@ -18,23 +15,34 @@ const names: Array<string> = [
   MichaelJimenez,
   MichaelJensen,
   MichaelJackson,
-  MichaelJacobs
+  MichaelJacobs,
 ]
 
-const state: Map<string, Object> = new Map()
-
-names.forEach((name: string, i: number) => state.set(name, {
-  id: i + 1,
-  name
-}))
-
-function feed (store: Object): void {
-  return state.forEach(x => store.set(x.name, x))
+export interface IName {
+  id: number,
+  name: string,
 }
 
-module.exports = {
-  state,
-  feed,
+export type Store = Map<string, IName>
+
+const store: Store = new Map()
+
+names.forEach((name, i) => {
+  store.set(name, {
+    id: i + 1,
+    name,
+  })
+})
+
+function fill(s: Store) {
+  store.forEach((x) => {
+    s.set(x.name, x)
+  })
+}
+
+export default {
+  store,
+  fill,
   Michael,
   MichaelJoseph,
   MichaelJones,
@@ -42,5 +50,5 @@ module.exports = {
   MichaelJimenez,
   MichaelJensen,
   MichaelJackson,
-  MichaelJacobs
+  MichaelJacobs,
 }

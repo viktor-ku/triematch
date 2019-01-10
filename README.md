@@ -1,13 +1,12 @@
 # Triematch.js
 
-> Fast Trie structure implementation with matching feature
+> Fast Trie structure implementation with matching feature. Best suited for autocompletion!
 
 ```bash
 npm install triematch
 ```
 
 - [Features](#features)
-- [Roadmap](#roadmap)
 - [Changelog](#changelog)
 - [How it works](#how-it-works)
 - [Get Started](#get-started)
@@ -20,10 +19,6 @@ npm install triematch
 -   No dependencies
 -   Very tiny
 -   Browser compatible (via e.g. `webpack`)
-
-## Roadmap
-
--   Performance improvements by hacking stuff
 
 ## Changelog
 
@@ -50,7 +45,18 @@ store.set('Michael Jacobs', [5, 5, 4, 7])
 store.set('Michael Jackson', () => 'Moonwalk')
 ```
 
-We can use `get` function to get exactly that item that was inserted by
+You can use `match` function which is similar to the `String.prototype.match` but in a way that it uses `Trie` structure to get every possible item that matches `query`
+
+```js
+assert(store.match('M').length === 5)
+assert(store.match('Michael').length === 5)
+assert(store.match('Michael Jones').length === 2) // Jones and Joneson
+
+// As a result there will be at least empty array anyway
+assert(store.match('foo').length === 0)
+```
+
+Or you can use plain old `get` function to get exactly that item that was inserted by
 this `key` before
 
 ```js
@@ -60,17 +66,6 @@ assert(store.get('Michael Joneson').score === 512)
 assert.deepEqual(store.get('Michael Jacobs'), [5, 5, 4, 7])
 assert(store.get('Michael Jackson')() === 'Moonwalk')
 assert(store.get('Michael') === null)
-```
-
-Or we can use `match` function which is similar to the `String.prototype.match` but in a way that it uses `Trie` structure to get every possible thing that has `query`
-
-```js
-assert(store.match('M').length === 5)
-assert(store.match('Michael').length === 5)
-assert(store.match('Michael Jones').length === 2) // Jones and Joneson
-
-// As a result there will be at least empty array anyway
-assert(store.match('foo').length === 0)
 ```
 
 ## License

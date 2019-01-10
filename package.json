@@ -2,18 +2,17 @@
   "name": "triematch",
   "version": "2.0.2",
   "description": "Fast Trie structure implementation with matching feature",
-  "main": "dist/Trie.js",
+  "main": "dist/lib.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
+  "types": "src/lib.ts",
   "scripts": {
-    "test": "clear && tap -R dot test/index.js",
-    "cov": "npm t -- --cov",
-    "build": "npm run clean && babel src -d dist",
-    "docs:serve": "documentation serve -w src/",
-    "docs:build": "documentation build src/Trie.js -f html -o .",
-    "clean": "rm -rf dist .nyc_output coverage *.tgz docs",
-    "prepack": "npm run build"
+    "test": "jest",
+    "build": "npm run clean && tsc",
+    "prepack": "npm run build",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -35,20 +34,10 @@
   },
   "homepage": "https://github.com/kuroljov/triematch#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^10.0.1",
-    "babel-preset-flow": "^6.23.0",
-    "babel-register": "^6.26.0",
-    "documentation": "^9.1.1",
-    "eslint": "^5.12.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-flowtype": "^3.2.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "flow-bin": "^0.89.0",
-    "sinon": "^7.2.2",
-    "tap": "^12.1.1"
+    "@types/jest": "^23.3.12",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   }
 }

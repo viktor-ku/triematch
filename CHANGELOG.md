@@ -2,6 +2,11 @@
 
 Notable changes only
 
+### 3.0.0
+
+- Refactor to use Typescript
+- Use Map for `rootSocket`
+
 ### 2.0.2
 
 - Write an actual key-value pair to the store in `new`
