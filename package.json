@@ -12,7 +12,9 @@
     "test": "jest",
     "build": "npm run clean && tsc",
     "prepack": "npm run build",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "docs": "typedoc --out .",
+    "docs:open": "npm run docs && npx http-serve ."
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,7 @@
     "jest": "^23.6.0",
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.0",
+    "typedoc": "^0.14.0",
     "typescript": "^3.2.2"
   }
 }
