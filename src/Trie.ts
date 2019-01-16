@@ -49,8 +49,8 @@ export class Trie<V = any> extends Map<string, any> {
       const nodesLen = nodes.length
 
       if (nodesLen >= 2) {
-        for (const pathNode of nodes.slice(1)) {
-          path.push(pathNode)
+        for (let n = 1, len = nodes.length; n < len; n += 1) {
+          path.push(nodes[n])
         }
       } else if (nodesLen === 0) {
         const nextNode = path.pop()
