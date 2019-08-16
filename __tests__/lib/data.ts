@@ -43,6 +43,7 @@ function fill(s: Store) {
 export default {
   store,
   fill,
+  names,
   Michael,
   MichaelJoseph,
   MichaelJones,
