@@ -9,7 +9,7 @@ export default defineConfig({
     include: ['tests/**/*.spec.{js,ts}'],
     environment: 'node',
     globals: false,
-    reporters: 'default',
+    reporters: ['default'],
   },
 })
 
