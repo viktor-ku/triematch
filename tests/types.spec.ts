@@ -1,39 +1,40 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Trie } from '@/lib'
 
-interface Person { id: number; name: string }
+interface Person {
+  id: number
+  name: string
+}
 
 describe('types', () => {
-    it('uses Trie APIs with typed values', () => {
-        const it = new Trie<Person>([['alpha', { id: 1, name: 'alpha' }]])
+  it('uses Trie APIs with typed values', () => {
+    const it = new Trie<Person>([['alpha', { id: 1, name: 'alpha' }]])
 
-        // set
-        it.set('beta', { id: 2, name: 'beta' })
+    // set
+    it.set('beta', { id: 2, name: 'beta' })
 
-        // get
-        const a: Person | undefined = it.get('alpha')
-        if (a) {
-            expect(a.id).toBe(1)
-            expect(a.name).toBe('alpha')
-        }
+    // get
+    const a: Person | undefined = it.get('alpha')
+    if (a) {
+      expect(a.id).toBe(1)
+      expect(a.name).toBe('alpha')
+    }
 
-        // match (all)
-        const matches: Person[] = it.match('b')
-        expect(matches).toHaveLength(1)
-        expect(matches[0]).toStrictEqual({ id: 2, name: 'beta' })
+    // match (all)
+    const matches: Person[] = it.match('b')
+    expect(matches).toHaveLength(1)
+    expect(matches[0]).toStrictEqual({ id: 2, name: 'beta' })
 
-        // match (limited)
-        const limited: Person[] = it.match('a', 1)
-        expect(limited.length).toBeGreaterThanOrEqual(0)
+    // match (limited)
+    const limited: Person[] = it.match('a', 1)
+    expect(limited.length).toBeGreaterThanOrEqual(0)
 
-        // delete
-        const deleted: boolean = it.delete('beta')
-        expect(deleted).toBe(true)
+    // delete
+    const deleted: boolean = it.delete('beta')
+    expect(deleted).toBe(true)
 
-        // clear
-        it.clear()
-        expect(it.size).toBe(0)
-    })
+    // clear
+    it.clear()
+    expect(it.size).toBe(0)
+  })
 })
-
-

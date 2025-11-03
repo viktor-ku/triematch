@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Trie } from '@/lib'
 
 describe('get', () => {
@@ -20,5 +20,3 @@ describe('get', () => {
     expect(it.get('bar')).toStrictEqual({ id: 2, name: 'bar' })
   })
 })
-
-

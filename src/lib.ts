@@ -63,7 +63,7 @@ export class Trie<V> extends Map<string, unknown> {
    */
   public get(query: string): V | undefined {
     const node = super.get(query) as Node<V> | undefined
-    return node && node.value
+    return node?.value
   }
 
   /**
@@ -142,7 +142,7 @@ export class Trie<V> extends Map<string, unknown> {
         node.socket.set(char, nextNode)
       }
 
-      node = nextNode!
+      node = nextNode
     }
 
     node.key = key

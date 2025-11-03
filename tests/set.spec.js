@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Trie } from '@/lib'
 
 describe('set', () => {
@@ -18,18 +18,20 @@ describe('set', () => {
   })
 
   it('accepts constructor entries', () => {
-    const it = new Trie([[ 'x', 1 ]])
+    const it = new Trie([['x', 1]])
     expect(it.size).toBe(1)
     expect(it.get('x')).toBe(1)
   })
 
   it('accepts multiple constructor entries', () => {
-    const it = new Trie([[ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ]])
+    const it = new Trie([
+      ['a', 1],
+      ['b', 2],
+      ['c', 3],
+    ])
     expect(it.size).toBe(3)
     expect(it.get('a')).toBe(1)
     expect(it.get('b')).toBe(2)
     expect(it.get('c')).toBe(3)
   })
 })
-
-

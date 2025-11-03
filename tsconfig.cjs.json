@@ -8,9 +8,5 @@
     "declarationDir": "dist/cjs",
     "removeComments": true
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }
-
-

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Trie } from '@/lib'
 
 describe('clear', () => {
@@ -19,5 +19,3 @@ describe('clear', () => {
     expect(it.match('A')).toEqual([])
   })
 })
-
-
