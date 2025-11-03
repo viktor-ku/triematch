@@ -1,0 +1,56 @@
+name: Publish Package
+
+on:
+    push:
+        tags:
+            - "*"
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            id-token: write
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Install mise
+              uses: jdx/mise-action@v2
+
+            - name: Install tools with mise
+              run: mise install
+
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
+
+            - name: Run tests
+              run: bun test
+
+            - name: Run biome check
+              run: bun run check
+
+            - name: Extract git tag
+              id: tag
+              run: |
+                  GIT_TAG=${GITHUB_REF#refs/tags/}
+                  # Remove 'v' prefix if present
+                  VERSION=${GIT_TAG#v}
+                  echo "git_tag=$GIT_TAG" >> $GITHUB_OUTPUT
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+            - name: Verify package.json version matches tag
+              run: |
+                  TAG_VERSION="${{ steps.tag.outputs.version }}"
+                  PACKAGE_VERSION=$(bun -e "console.log(require('./package.json').version)")
+                  if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+                    echo "Error: package.json version ($PACKAGE_VERSION) does not match git tag ($TAG_VERSION)"
+                    exit 1
+                  fi
+                  echo "✓ Version match confirmed: $PACKAGE_VERSION"
+
+            - name: Publish to npm
+              run: bun publish --tag ${{ steps.tag.outputs.git_tag }}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
