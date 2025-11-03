@@ -1,0 +1,25 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Install mise
+              uses: jdx/mise-action@v2
+
+            - name: Install tools with mise
+              run: mise install
+
+            - name: Install dependencies
+              run: bun install --frozen-lockfile
+
+            - name: Run tests
+              run: bun test
