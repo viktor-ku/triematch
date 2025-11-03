@@ -21,8 +21,12 @@
     "url": "https://github.com/viktor-ku/triematch/issues"
   },
   "homepage": "https://github.com/viktor-ku/triematch#readme",
+  "scripts": {
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
   "devDependencies": {
-    "ava": "^2.2.0",
-    "typescript": "=5.7.2"
+    "typescript": "=5.7.2",
+    "vitest": "^2.1.3"
   }
 }
