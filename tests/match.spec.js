@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Trie } from '@/Trie'
+import { Trie } from '@/lib'
 
 describe('match', () => {
   it('returns empty for no matches', () => {

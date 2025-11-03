@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Trie } from '@/Trie'
+import { Trie } from '@/lib'
 
 interface Person { id: number; name: string }
 

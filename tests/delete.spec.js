@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Trie } from '@/Trie'
+import { Trie } from '@/lib'
 
 describe('delete', () => {
   it('does nothing if key missing', () => {
