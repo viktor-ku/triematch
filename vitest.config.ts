@@ -6,7 +6,7 @@ export default defineConfig({
     alias: { '@': resolve(process.cwd(), 'src') },
   },
   test: {
-    include: ['tests/**/*.spec.js'],
+    include: ['tests/**/*.spec.{js,ts}'],
     environment: 'node',
     globals: false,
     reporters: 'default',
