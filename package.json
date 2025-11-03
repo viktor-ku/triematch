@@ -1,6 +1,6 @@
 {
   "name": "triematch",
-  "version": "3.0.2",
+  "version": "4.0.1",
   "description": "Fast Trie structure implementation with matching feature",
   "repository": {
     "type": "git",
