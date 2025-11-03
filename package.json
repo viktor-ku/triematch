@@ -2,24 +2,9 @@
   "name": "triematch",
   "version": "3.0.2",
   "description": "Fast Trie structure implementation with matching feature",
-  "main": "dist/lib.js",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "types": "src/lib.ts",
-  "scripts": {
-    "test": "ava",
-    "build": "npm run clean && tsc",
-    "prepack": "npm run build",
-    "clean": "rm -rf dist",
-    "docs": "typedoc --out .",
-    "docs:open": "npm run docs && npx http-serve .",
-    "bench": "npx ts-node benchmark/bench.ts"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kuroljov/triematch.git"
+    "url": "git+https://github.com/viktor-ku/triematch.git"
   },
   "keywords": [
     "trie",
@@ -33,9 +18,9 @@
   "author": "Viktor Kuroljov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kuroljov/triematch/issues"
+    "url": "https://github.com/viktor-ku/triematch/issues"
   },
-  "homepage": "https://github.com/kuroljov/triematch#readme",
+  "homepage": "https://github.com/viktor-ku/triematch#readme",
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
     "@types/faker": "^4.1.5",
