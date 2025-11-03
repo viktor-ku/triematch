@@ -48,6 +48,6 @@
     "ora": "^3.4.0",
     "ts-node": "^8.3.0",
     "typedoc": "^0.15.0",
-    "typescript": "^3.5.3"
+    "typescript": "=5.7.2"
   }
 }
